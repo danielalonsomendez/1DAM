@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 2.4 JS</title>
+  <style>
+    * {
+      font-family: 'Lucida Sans';
+    }
+  </style>
+</head>
+
+<body>
+  <script type="text/javascript">
+    let suma = 0;
+
+    array = [4, 8, 55, 16, 13, 42];
+    let max = 0;
+    let min = array[0];
+    for (var i = 0; i < array.length; i++) {
+      suma += array[i]
+      if (min > array[i]) {
+        min = array[i]
+      }
+      if (max < array[i]) {
+        max = array[i]
+      }
+    }
+    console.log(suma)
+    console.log(max)
+    console.log(min)
+  </script>
+</body>
+
+</html>

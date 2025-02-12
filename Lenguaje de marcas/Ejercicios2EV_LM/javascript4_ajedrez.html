@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess</title>
+    <style>
+        #tablero {
+            border: 1px solid darkgray;
+            border-spacing: 0px;
+            margin: 2px;
+        }
+
+        td {
+            height: 20px;
+        }
+
+        .filapar td:nth-child(even) {
+            background: darkgray;
+        }
+
+        .filaimpar td:nth-child(odd) {
+            background: darkgray;
+        }
+
+        .blackborder {
+            border: 10px solid black !important;
+        }
+
+        .littleblackborder {
+            border: 2px solid rgb(154, 154, 154) !important;
+        }
+
+        .littleblackborderlines {
+            border-bottom: 2px solid black !important;
+        }
+
+        .red {
+            color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <button onclick="B1()">B1</button>
+    <button onclick="B2()">B2</button>
+    <button onclick="B3()">B3</button>
+    <button onclick="B4()">B4</button>
+    <button onclick="B5()">B5</button>
+    <button onclick="B6()">B6</button>
+    <button onclick="B7()">B7</button>
+    <button onclick="B8()">B8</button>
+
+    <table id="tablero">
+        <tr class="filapar">
+            <td class="t n">♜</td>
+            <td class="c n">♞</td>
+            <td class="a n">♝</td>
+            <td class="d n">♛</td>
+            <td class="r n">♚</td>
+            <td class="a n">♝</td>
+            <td class="c n">♞</td>
+            <td class="t n">♜</td>
+        </tr>
+        <tr class="filaimpar">
+            <td class="p n">♟</td>
+            <td class="p n">♟</td>
+            <td class="p n">♟</td>
+            <td class="p n">♟</td>
+            <td class="p n">♟</td>
+            <td class="p n">♟</td>
+            <td class="p n">♟</td>
+            <td class="p n">♟</td>
+        </tr>
+        <tr class="filapar">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="filaimpar">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="filapar">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="filaimpar">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="filapar">
+            <td class="p b">♙</td>
+            <td class="p b">♙</td>
+            <td class="p b">♙</td>
+            <td class="p b">♙</td>
+            <td class="p b">♙</td>
+            <td class="p b">♙</td>
+            <td class="p b">♙</td>
+            <td class="p b">♙</td>
+        </tr>
+        <tr class="filaimpar">
+            <td class="t b">♖</td>
+            <td class="c b">♘</td>
+            <td class="a b">♗</td>
+            <td class="d b">♕</td>
+            <td class="r b">♔</td>
+            <td class="a b">♗</td>
+            <td class="c b">♘</td>
+            <td class="t b">♖</td>
+        </tr>
+    </table>
+
+    <script type="text/javascript">
+        function intercambiarclassname(selector, classid) {
+            if (selector.classList.contains(classid)) {
+                selector.classList.remove(classid)
+            } else {
+                selector.classList.add(classid)
+            }
+        }
+        function B1() {
+            intercambiarclassname(document.getElementById("tablero"), "blackborder")
+        }
+        function B2() {
+            let tds = document.getElementsByTagName("td");
+            for (let i = 0; i < tds.length; i++) {
+                intercambiarclassname(tds[i], "littleblackborder")
+            }
+        }
+        function B3() {
+            let fichasnegras = document.getElementsByClassName("n");
+            for (let i = 0; i < fichasnegras.length; i++) {
+                intercambiarclassname(fichasnegras[i], "red")
+            }
+        }
+        function B4() {
+            let caballos = document.getElementsByClassName("c");
+            for (let i = 0; i < caballos.length; i++) {
+                if (caballos[i].classList.contains("b")) {
+                    caballos[i].innerHTML = (caballos[i].innerHTML == "🐪") ? "♘" : "🐪"
+                } else {
+                    caballos[i].innerHTML = (caballos[i].innerHTML == "🦄") ? "♞" : "🦄"
+                }
+
+            }
+        }
+        function B5() {
+            let tds = document.getElementsByTagName("td");
+            for (let i = 0; i < tds.length; i++) {
+                intercambiarclassname(tds[i], "littleblackborderlines")
+            }
+        }
+        function B6() {
+            intercambiarclassname(document.querySelector("#tablero"), "blackborder")
+        }
+        function B7() {
+            let tds = document.querySelectorAll("td");
+            for (let i = 0; i < tds.length; i++) {
+                intercambiarclassname(tds[i], "littleblackborderlines")
+            }
+        }
+    </script>
+
+</body>
+
+</html>

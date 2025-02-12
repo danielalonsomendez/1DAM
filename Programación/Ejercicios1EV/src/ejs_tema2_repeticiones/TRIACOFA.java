@@ -1,0 +1,25 @@
+package ejs_tema2_repeticiones;
+
+import java.util.Scanner;
+
+public class TRIACOFA {
+
+	public static void main(String[] args) {
+		int num,start =0;
+		Scanner teclado = new Scanner(System.in);
+		System.out.printf("Introduce un NÚMERO ENTERO: ");
+		num = teclado.nextInt();
+		System.out.printf("n = %s\n", num);
+		for (int i = num; num >= i && i > 0; i--) {
+			for (int z = 1; i >= z; z++) {
+				System.out.printf("%s ", start+ z);
+			}
+			start++;
+			System.out.printf("\n");
+
+		}
+		teclado.close();
+
+	}
+
+}

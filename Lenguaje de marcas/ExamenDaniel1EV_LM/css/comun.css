@@ -1,0 +1,107 @@
+/*Contenido de la página*/
+body {
+    margin: 15px;
+    background: lightskyblue;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*Header*/
+header {
+    background: linear-gradient(#6495ed 0%, #87cefa 70%, cornflowerblue 100%);
+    border-radius: 15px;
+    padding-top: 20px;
+}
+
+/*Titulo con imagen de Tridente*/
+.titulo {
+    display: flex;
+    justify-content: center;
+    line-height: 9px;
+}
+
+.titulo img {
+    width: 70px;
+}
+
+/*Menu de navegación*/
+nav {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li a {
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 2vh;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: royalblue;
+    color: white;
+}
+
+/*Adaptación del header y menu de navegación a vertical para móviles*/
+@media (max-width: 600px) {
+    header {
+        background: linear-gradient(#6495ed, #87cefa, cornflowerblue);
+    }
+    nav ul {    
+        text-align: center;
+        flex-direction: column;
+    }
+    nav ul li {
+        margin: 12px;
+    }
+}
+
+/* Articulos */
+article {
+    background: lightcyan;
+    padding: 15px;
+    border-radius: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+article h2 {
+    color: royalblue;
+    font-size: 1.7rem;
+    margin: 0px;
+    border: 1px royalblue;
+    border-style: solid none;
+    text-align: center;
+}
+
+article p {
+    font-size: 1.2rem;
+}
+
+/*Footer*/
+footer {
+    display: flex;
+    justify-content: flex-end;
+    background: linear-gradient(cornflowerblue, lightskyblue, cornflowerblue);
+    padding: 15px;
+    border-radius: 15px;
+}
+
+footer img {
+    width: 200px;
+}
+
+/*Adaptación del footer para móviles*/
+@media (max-width: 600px) {
+    footer {
+        justify-content: center;
+    }
+}

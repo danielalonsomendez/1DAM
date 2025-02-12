@@ -1,0 +1,26 @@
+/*Tabla Mitologia*/
+table {
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    border-spacing: 0px;
+    border-collapse: separate;
+}
+
+th,
+td {
+    border: 1.5px solid royalblue;
+    margin: 0px;
+    padding: 7px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+th {
+    color: royalblue;
+}
+
+/*Cambiar color en filas alternas de la tabla*/
+table tbody tr:nth-child(even) {
+    background: lightskyblue;
+}

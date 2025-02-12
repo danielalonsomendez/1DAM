@@ -1,0 +1,70 @@
+/*Tarjetas con foto a un lado*/
+.tarjeta {
+    display: flex;
+    margin-top: 30px;
+}
+.izquierda {
+    flex-direction: row-reverse;
+}
+
+.tarjeta.izquierda .descripcion {
+    padding-left: 30px;
+}
+
+.tarjeta.derecha .descripcion {
+    padding-right: 30px;
+}
+
+.tarjeta img {
+    width: 40vw;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.tarjeta .descripcion p {
+    text-align: justify;
+}
+
+.tarjeta p {
+    padding-top: 10px;
+    padding-bottom: 10px;
+font-size: 1.4rem;
+}
+
+.tarjeta span {
+    font-size: 3rem;
+    font-family: Caudex;
+
+    font-weight: bold;
+}
+
+@media (max-width: 1200px) {
+    .tarjeta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .izquierda {
+        flex-direction: column;
+    }
+
+    .tarjeta.izquierda .descrip {
+        padding-left: 0px;
+    }
+
+    .tarjeta.derecha .descrip {
+        padding-right: 0px;
+    }
+
+    .tarjeta img {
+        width: 82vw;
+        height: 50vw;
+    }
+    .tarjeta.izquierda .descripcion {
+        padding-left: 0px;
+    }
+    .tarjeta.derecha .descripcion {
+        padding-right: 0px;
+    }
+    
+}

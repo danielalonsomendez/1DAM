@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio F3 JS</title>
+  <script type="text/javascript">
+    function esPrimo(n) {
+      if (n <= 1) return false;
+      for (let i = 2; i * i <= n; i++) {
+        if (n % i === 0) return false;
+      }
+      return true;
+    }
+    let num = window.prompt("Escribe un número")
+    if (esPrimo(num)) {
+      document.write(num+" ES PRIMO")
+    } else {
+      document.write(num+ " NO ES PRIMO")
+    }
+  </script>
+  <style>
+    * {
+      font-family: 'Lucida Sans';
+    }
+  </style>
+</head>
+
+<body>
+</body>
+
+</html>

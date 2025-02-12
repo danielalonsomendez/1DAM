@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 2.5 JS</title>
+  <style>
+    * {
+      font-family: 'Lucida Sans';
+    }
+  </style>
+</head>
+
+<body>
+  <script type="text/javascript">
+    array = [4, 8, 55, 16, 13, 42];
+    let suma = 0;
+    for (var i = 0; i < array.length; i++) {
+      suma += array[i]
+    }
+    let media = suma / array.length;
+    console.log("Números SUPERIORES a la MEDIA:")
+    for (var i = 0; i < array.length; i++) {
+      if (media <= array[i]) {
+        console.log(array[i])
+      }
+    }
+    console.log("Números INFERIORES a la MEDIA:")
+    for (var i = 0; i < array.length; i++) {
+      if (media > array[i]) {
+        console.log(array[i])
+      }
+    }
+  </script>
+</body>
+
+</html>

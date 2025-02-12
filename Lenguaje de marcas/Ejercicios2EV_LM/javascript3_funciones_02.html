@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio F2 JS</title>
+  <script type="text/javascript">
+    function calcularArea(radio) {
+      return Math.PI * (radio * radio).toFixed(2);
+    }
+    let radio;
+    do {
+      radio = window.prompt("Escribe el RADIO (* para terminar)",5)
+      if (radio != "*") {
+        window.alert("Area: " + calcularArea(radio))
+      }
+    }
+    while (radio != "*")
+  </script>
+  <style>
+    * {
+      font-family: 'Lucida Sans';
+    }
+  </style>
+</head>
+
+<body>
+</body>
+
+</html>

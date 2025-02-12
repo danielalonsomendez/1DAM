@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bombilla</title>
+    <script type="text/javascript">
+        function fOn() {
+            document.getElementById("bombilla").src = "img/bombilla_on.png"
+            document.getElementById("bombilla").alt ="Bombilla encendida"
+            document.getElementsByName("bOn")[0].disabled = true;
+            document.getElementsByName("bOff")[0].disabled = false;
+        }
+        function fOff() {
+            document.getElementById("bombilla").src = "img/bombilla_off.png"
+            document.getElementById("bombilla").alt ="Bombilla apagada"
+            document.getElementsByName("bOn")[0].disabled = false;
+            document.getElementsByName("bOff")[0].disabled = true;
+        }
+        function fOnOff() {
+            console.log(document.getElementById("bombilla").src )
+            if (document.getElementById("bombilla").alt == "Bombilla apagada") {   
+                fOn()
+            } else {
+                fOff()
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button name="bOn" onclick="fOn()">On</button>
+    <button name="bOff" onclick="fOff()" disabled>Off</button>
+    <button name="bOnOff" onclick="fOnOff()">On/Off</button>
+    <br>
+    <img id="bombilla" src="img/bombilla_off.png" alt="Bombilla apagada" title="Bombilla" width="97px" height="150px">
+
+</body>
+
+</html>

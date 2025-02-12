@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 4 JS</title>
+  <style>
+    * {
+      font-family: 'Lucida Sans';
+    }
+  </style>
+</head>
+
+<body>
+  <script type="text/javascript">
+    let edad = window.prompt("¿Cúal es tu EDAD?");
+    if (edad > 0) {
+      if (edad < 30) document.write(`<h1>Te quedan ${30 - edad} para ser treintañero</h1>`)
+      if (edad < 40) document.write(`<h1>Te quedan ${40 - edad} para ser cuarenton</h1>`)
+      if (edad < 100) document.write(`<h1>Te quedan ${100 - edad} para ser sabio</h1>`); else document.write(`<h1>Eres sabio</h1>`)
+    } else {
+      document.write(`<h1>Introduce un número positivo</h1>`)
+    }
+  </script>
+</body>
+
+</html>

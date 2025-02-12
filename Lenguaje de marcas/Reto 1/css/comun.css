@@ -1,0 +1,189 @@
+/*Aplicar a toda la pagina*/
+* {
+    font-family: "Manrope", sans-serif;
+    margin: 0;
+}
+
+/*Color de fondo*/
+body {
+    background-color: rgb(234, 228, 225);
+}
+
+/*Contenido de la pagina*/
+main {
+    margin-top: 20px;
+    margin-left: 40px;
+    padding-right: 40px;
+    margin-bottom: 50px;
+}
+
+/*Header y menu de navegación*/
+header {
+    background: linear-gradient(#ffa500, rgb(234, 228, 225));
+    padding: 30px;
+    padding-bottom: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav {
+    justify-content: right;
+    display: flex;
+}
+
+header h1 {
+    background: #6377f5;
+    text-align: center;
+}
+
+header nav ul {
+    display: flex;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+header nav ul li a {
+    color: rgb(0, 0, 0);
+    padding: 6px;
+    margin: 10px;
+    text-decoration: none;
+}
+
+header nav ul li {
+    list-style: none;
+    color: black;
+    font-size: 2rem;
+    text-align: left;
+}
+
+header nav ul li a:hover {
+    background-color: rgb(0, 0, 0, 0.2);
+    padding: 6px;
+    color: black;
+    border-radius: 10px;
+}
+
+#logo {
+    width: 19rem;
+    display: flex;
+}
+
+@media (max-width: 1200px) {
+    header nav ul {
+        margin-bottom: 20px;
+    }
+
+    header nav ul li {
+        margin-top: 40px;
+    }
+
+    header nav ul li a {
+        padding-top: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+
+        padding-bottom: 10px;
+    }
+
+    header nav ul li a:hover {
+        padding-top: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
+
+        padding-bottom: 15px;
+    }
+
+}
+
+
+/*Titulos y subtitulos con divisor*/
+.titulo {
+    margin-top: 30px;
+}
+
+.titulo span {
+    font-size: 3rem;
+    font-family: Caudex;
+    font-weight: bold;
+}
+
+.titulo.pequeno {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.titulo.pequeno span {
+    font-size: 2rem;
+    font-family: Caudex;
+    font-weight: bold;
+}
+
+hr {
+    width: 60px;
+    margin-top: 10px;
+    border: 3px solid orange;
+    border-radius: 40px;
+}
+
+/*Titulo con boton */
+.textoconboton {
+    align-items: center;
+    display: block;
+    justify-content: space-between;
+}
+
+/*Boton tamaño grande */
+.botonlargo {
+    margin-top: 20px;
+    align-content: center;
+    display: inline-block;
+    padding: 10px;
+    border: 1px outset buttonborder;
+    border-radius: 10px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: black;
+    background-color: rgb(255, 165, 0);
+    text-decoration: none;
+}
+
+.botonlargo:hover {
+    transform: scale(1.15) !important;
+}
+
+/*Footer*/
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background: linear-gradient(#eae4e1, orange);
+    padding: 50px;
+}
+
+footer .enlaces a {
+    padding: 10px;
+    margin: 5px;
+    text-decoration: none;
+    color: black;
+    font-size: 1.75rem;
+    text-align: left;
+}
+
+footer .enlaces a:hover {
+    background-color: rgb(0, 0, 0, 0.2);
+    color: black;
+    border-radius: 10px;
+}
+
+@media (max-width: 1200px) {
+    footer .enlaces {
+        display: block;
+        margin-bottom: 20px;
+        margin-top: 20px;
+
+    }
+
+}

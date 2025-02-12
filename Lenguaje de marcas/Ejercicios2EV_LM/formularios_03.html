@@ -1,0 +1,111 @@
+<html>
+
+<head>
+    <style>
+        div {
+            display: flex;
+            padding-bottom: 10px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        article {
+            display: flex;
+            justify-content: center;
+        }
+
+        label {
+            font-weight: bold;
+padding-right: 10px;
+        }
+
+        form {
+          
+            background-color: darkgrey;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        textarea {
+            resize: none;
+            width: 100%;
+            margin-top: 10px;
+            height: 7vh;
+        }
+
+        textarea,
+        input {
+            background-color: lightgray;
+            border: 0px;
+            padding: 10px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            border: 0;
+            border-radius: 5px;
+            width: 100%;
+            background-color: black;
+            color: white;
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <article>
+        <form action="#" method="get">
+            <div>
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" required placeholder="Escriba aqui su nombre">
+            </div>
+            <div>
+                <label for="apellidos">Apellidos</label>
+                <input type="text" name="apellidos" required placeholder="Primer apellido al menos">
+            </div>
+            <div>
+                <label for="municipio">Municipio</label>
+                <input type="text" list="municipio">
+                <datalist id="municipio">
+                    <option>Abadiño</option>
+                    <option>Abanto</option>
+                    <option>Ajangiz</option>
+                    <option>Alonsotegi</option>
+                    <option>Amoroto</option>
+                    <option>Arakaldo</option>
+                    <option>Arantzazu</option>
+                    <option>Areatza</option>
+                    <option>Arrankudiaga</option>
+                    <option>Arratzu</option>
+                    <option>Arrieta</option>
+                    <option>Arrigorriaga</option>
+                    <option>Arteaga</option>
+                    <option>Artzentales</option>
+                    <option>Atxondo</option>
+                    <option>Aulesti</option>
+                </datalist>
+
+            </div>
+            <div>
+                <label for="email">Correo e.</label>
+                <input type="email" name="email" required placeholder="Email">
+            </div>
+            <div>
+                <label for="tema">Tema</label>
+                <input type="text" name="tema" required placeholder="Asunto">
+            </div>
+
+            <label for="mensaje">Mensaje</label><br>
+            <textarea maxlength="300" name="mensaje" placeholder="Max. 300 palabras"></textarea>
+            <br>
+            <button type="submit">Enviar datos</button>
+        </form>
+    </article>
+</body>
+
+</html>

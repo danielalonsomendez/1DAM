@@ -1,0 +1,193 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+        body{
+            margin: 0px;
+        }
+      .flex-outer > li,
+      .flex-inner {
+        padding: 0px;
+        width: 50vw;
+        justify-content: flex-start;
+        /* Asigna un factor de crecimiento de 1, un factor de contracción de 0 y un tamaño inicial de 220px. */
+      }
+      .flex-inner input {
+        width: auto;
+      }
+      ul {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      li {
+        text-decoration: none;
+        display: flex;
+        padding-bottom: 10px;
+        align-items: center;
+      }
+
+      article {
+        display: flex;
+        justify-content: center;
+      }
+
+      label {
+        font-weight: bold;
+        padding-right: 10px;
+        color: white;
+        width: 220px;
+        font-family: "Fira Sans", "Helvetica Neue", sans-serif;
+      }
+
+      form {
+        width: 80vw;
+        background-color: #3aafab;
+        border-radius: 10px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+      }
+
+      textarea,
+      input {
+        width: 50vw;
+        background-color: white;
+        border: 0px;
+        margin: 1px;
+        padding: 5px;
+        font-family: "Fira Sans", "Helvetica Neue", sans-serif;
+
+      }
+      textarea {
+        resize: none;
+        margin-bottom: 10px;
+      }
+
+      input[type="submit"] {
+        margin-left: auto;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 16px;
+        text-transform: uppercase;
+        margin-top: 10px;
+        border: 0;
+        border-radius: 2px;
+        letter-spacing: 0.09em;
+        width: 100%;
+        background-color: black;
+        color: white;
+        width: 8vw;
+      }
+   
+      input[type="submit"]:hover {
+        cursor: pointer;
+      }
+      @media (max-width: 600px) {
+      ul{
+        padding: 0px;
+      }
+      li{
+        display: flex;
+        flex-wrap: wrap;
+
+      }
+    
+      input[type="submit"] {
+    width: 25vw;
+   }
+   .flex-inner li {
+flex-wrap: nowrap;
+width: 15vw;
+      }
+    }
+    </style>
+  </head>
+
+  <body>
+    <article>
+      <form>
+        <ul class="flex-outer">
+          <li>
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" placeholder="Introduce tu nombre" />
+          </li>
+          <li>
+            <label for="apellido">Apellidos</label>
+            <input
+              type="text"
+              id="apellido"
+              placeholder="Introduce tus apellidos"
+            />
+          </li>
+          <li>
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Introduce tu email" />
+          </li>
+          <li>
+            <label for="municipio">Municipio</label>
+            <input type="text" list="municipio" />
+            <datalist id="municipio">
+              <option>Abadiño</option>
+              <option>Abanto</option>
+              <option>Ajangiz</option>
+              <option>Alonsotegi</option>
+              <option>Amoroto</option>
+              <option>Arakaldo</option>
+              <option>Arantzazu</option>
+              <option>Areatza</option>
+              <option>Arrankudiaga</option>
+              <option>Arratzu</option>
+              <option>Arrieta</option>
+              <option>Arrigorriaga</option>
+              <option>Arteaga</option>
+              <option>Artzentales</option>
+              <option>Atxondo</option>
+              <option>Aulesti</option>
+            </datalist>
+          </li>
+          <li>
+            <label for="mensaje">Mensaje</label>
+            <textarea
+              rows="6"
+              id="mensaje"
+              placeholder="Introduce el mensaje"
+            ></textarea>
+          </li>
+          <li>
+            <label>Edad</label>
+            <ul class="flex-inner">
+              <li>
+                <input type="checkbox" id="veintes" />
+                <label for="veintes">20-29</label>
+              </li>
+              <li>
+                <input type="checkbox" id="treintas" />
+                <label for="treintas">30-39</label>
+              </li>
+              <li>
+                <input type="checkbox" id="cuarentas" />
+                <label for="cuarentas">40-49</label>
+              </li>
+              <li>
+                <input type="checkbox" id="cincuentas" />
+                <label for="cincuentas">50-59</label>
+              </li>
+              <li>
+                <input type="checkbox" id="sesentas" />
+                <label for="sesentas">60-69</label>
+              </li>
+              <li>
+                <input type="checkbox" id="otro" />
+                <label for="otro">Otro</label>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <input type="submit" name="Enviar" value="Enviar" />
+          </li>
+        </ul>
+      </form>
+    </article>
+  </body>
+</html>

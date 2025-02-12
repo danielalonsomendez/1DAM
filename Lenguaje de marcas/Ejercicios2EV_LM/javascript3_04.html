@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 3.3 JS</title>
+  <style>
+    * {
+      font-family: 'Lucida Sans';
+    }
+  </style>
+</head>
+
+<body>
+  <script type="text/javascript">
+    const numeros = [
+      "As", "Dos", "Tres", "Cuatro", "Cinco", "Seis", "Siete", "Ocho",
+      "Nueve", "Sota", "Caballo", "Rey"
+    ];
+    const palos = [
+      "bastos", "copas", "espadas", "oros"
+    ];
+    let repetidos = [];
+    let i = 1;
+    while (i <= 15) {
+      let nombre = numeros[Math.floor(Math.random() * numeros.length)] + " de " + palos[Math.floor(Math.random() * palos.length)];
+      if (!repetidos.includes(nombre)) {
+        repetidos.push(nombre)
+        document.write(i + "- " + nombre + "<br>")
+        i++;
+      }
+    }
+
+  </script>
+</body>
+
+</html>

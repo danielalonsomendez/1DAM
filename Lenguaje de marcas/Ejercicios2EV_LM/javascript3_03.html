@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 3.3 JS</title>
+  <style>
+    * {
+      font-family: 'Lucida Sans';
+    }
+  </style>
+</head>
+
+<body>
+  <script type="text/javascript">
+    const numeros = [
+      "As", "Dos", "Tres", "Cuatro", "Cinco", "Seis", "Siete", "Ocho",
+      "Nueve", "Sota", "Caballo", "Rey"
+    ];
+    const palos = [
+      "bastos", "copas", "espadas", "oros"
+    ];
+    for (let i = 1; i <= 15; i++) {
+      let nombre = numeros[Math.floor(Math.random() * numeros.length)] + " de " + palos[Math.floor(Math.random() * palos.length)];
+      document.write(i + "- " + nombre + "<br>")
+    }
+  </script>
+</body>
+
+</html>

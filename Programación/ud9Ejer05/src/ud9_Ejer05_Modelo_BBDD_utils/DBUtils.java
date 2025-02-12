@@ -1,0 +1,10 @@
+package ud9_Ejer05_Modelo_BBDD_utils;
+
+public class DBUtils {
+
+	public static final String URL = "jdbc:mysql://localhost:33060/bdalumnos_m";
+	public static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+	public static final String USER = "Mañana";
+	public static final String PASSWORD = "M@ñana!D4M3";
+	
+}

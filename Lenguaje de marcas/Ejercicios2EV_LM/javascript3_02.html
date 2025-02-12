@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 3.2 JS</title>
+  <style>
+    * {
+      font-family: 'Lucida Sans';
+    }
+  </style>
+</head>
+
+<body>
+  <script type="text/javascript">
+    let caracteres = [];
+    let ultimov = ""
+    do {
+      ultimov = window.prompt("Escribe un carácter");
+      if (ultimov != "*") {
+        caracteres.push(ultimov)
+      }
+    } while (ultimov != "*")
+    document.write(caracteres.join("<br>") )
+
+    console.log(caracteres.length)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+.ubicacion {
+    background: #eae4e1;
+    flex-shrink: 1;
+    flex-wrap: wrap;
+    flex: 1 10%;
+    width: 49%;
+    border-radius: 20px;
+    margin-right: 1%;
+    margin-bottom: 1%;
+    display: block;
+}
+
+iframe {
+    width: 40vw;
+    height: 450px;
+}
+
+.ubicaciones {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+
+@media (max-width: 1300px) {
+    .ubicacion {
+        margin-top: 20px;
+        width: 100%;
+        flex: 1 30%;
+    }
+
+    iframe {
+        width: 80vw;
+    }
+}

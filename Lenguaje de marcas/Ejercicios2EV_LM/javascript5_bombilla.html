@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bombilla</title>
+</head>
+
+<body>
+    <h1>La bombilla</h1>
+    <h2>Probando eventos y su gestión</h2>
+    <button name="bOn" onclick="fOn()">On</button>
+    <button name="bOff" onclick="fOff()" disabled>Off</button>
+    <button name="bOnOff" onclick="fOnOff()">On/Off</button>
+    <br>
+    <img id="bombilla" src="img/bombilla_off.png" alt="Bombilla apagada" title="Bombilla" width="97px" height="150px">
+
+    <script type="text/javascript">
+        const bombilla = document.getElementById("bombilla");
+        const bOn = document.getElementsByName("bOn")[0];
+        const bOff = document.getElementsByName("bOff")[0];
+        const bOnOff = document.getElementsByName("bOnOff")[0];
+
+        function fOn() {
+            bombilla.src = "img/bombilla_on.png"
+            bombilla.alt = "Bombilla encendida"
+            bOn.disabled = true;
+            bOff.disabled = false;
+        }
+        function fOff() {
+            bombilla.src = "img/bombilla_off.png"
+            bombilla.alt = "Bombilla apagada"
+            bOn.disabled = false;
+            bOff.disabled = true;
+        }
+        function fOnOff() {
+            (bombilla.alt == "Bombilla apagada") ?fOn():fOff()
+        }
+        document.querySelector("h1").addEventListener("click",fOn)
+        document.querySelector("h2").addEventListener("click",fOff)
+        bOn.addEventListener("mouseover",fOn)
+        bOff.addEventListener("mouseout",fOff)
+        bOnOff.addEventListener("mouseover",fOn)
+        bOnOff.addEventListener("mouseout",fOff)
+        bombilla.addEventListener("click",fOn)
+        bombilla.addEventListener("dblclick",fOff)
+        document.addEventListener("keydown",fOn)
+        document.addEventListener("keyup",fOff)
+
+    </script>
+</body>
+
+</html>

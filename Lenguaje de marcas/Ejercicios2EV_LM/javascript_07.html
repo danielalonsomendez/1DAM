@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 7 JS</title>
+  <style>
+    * {
+      font-family: 'Lucida Sans';
+    }
+  </style>
+</head>
+
+<body>
+  <script type="text/javascript">
+    let edad = window.prompt("¿Cúal es tu EDAD?");
+    let texto;
+    switch (true) {
+      case edad >= 20 && edad < 30:
+        texto = "veinteañero"
+        break;
+      case edad >= 30 && edad < 40:
+        texto = "treintañero"
+        break;
+      case edad >= 50 && edad < 60:
+        texto = "cincuenton"
+        break;
+      case edad >= 60 && edad < 70:
+        texto = "sexagenarios"
+        break;
+      case edad >= 80 && edad < 90:
+        texto = "octogenario"
+      case edad >= 100:
+        texto = "centenario"
+    }
+    if (texto != undefined) document.write(`<h1>Eres ${texto}</h1>`); else document.write("<h1>No se ha encontrado un nombre para tu edad.</h1>")
+  </script>
+</body>
+
+</html>

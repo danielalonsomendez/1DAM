@@ -1,0 +1,12 @@
+/* Imagen circular de poseidon con fondo azul */
+#poseidonimg {
+    display: flex;
+    justify-content: center;
+}
+
+.imgcirculo {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: lightskyblue;
+}
