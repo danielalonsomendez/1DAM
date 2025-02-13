@@ -18,4 +18,9 @@ public class Controlador {
 		alumnos = gestorAlumnos.buscarTodosAlumnos();
 		return alumnos;
 	}
+
+	public void insertarAlumno(Alumno alumno) {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -5,7 +5,14 @@ public class Alumno {
 	private String nombre;
 	private String apellidos;
 	private String grupo;
-	
+	private String fecNacimiento;
+
+	public String getFecNacimiento() {
+		return fecNacimiento;
+	}
+	public void setFecNacimiento(String fecNacimiento) {
+		this.fecNacimiento = fecNacimiento;
+	}
 	public String getDni() {
 		return dni;
 	}
@@ -32,8 +39,10 @@ public class Alumno {
 	}
 	@Override
 	public String toString() {
-		return "Alumno [dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", grupo=" + grupo + "]";
+		return "Alumno [dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", grupo=" + grupo
+				+ ", fecNacimiento=" + fecNacimiento + "]";
 	}
+
 
 	
 }

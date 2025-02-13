@@ -7,7 +7,6 @@ import ud9_Ejer03_Modelo_BBDD_Gestor.GestorAlumnos;
 
 public class Controlador {
 
-
 	public void insertarAlumno(Alumno alumno) {
 		GestorAlumnos gestorAlumnos = new GestorAlumnos();
 		gestorAlumnos.insertarAlumno(alumno);
