@@ -4,29 +4,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio de repaso</title>
+    <title>Formulario - Validacion JS</title>
     <style>
+        body {
+            background-color: lightgrey;
+            padding: 1rem;
+            margin: 0;
+        }
 
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: .7rem;
+        }
+
+        fieldset {
+            border: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        legend {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            padding: 0;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            width: 300px;
+            font-size: 1.2rem;
+            margin-bottom: .5rem;
+        }
+
+        span {
+            color: red;
+        }
+
+        input {
+            width: 200px;
+            padding: .5rem;
+            border-radius: .3rem;
+            border: none;
+            margin-bottom: 1rem;
+        }
+
+        button {
+            /* margin-top: 1rem; */
+            width: 100px;
+            padding: .5rem;
+            border-radius: .3rem;
+            border: none;
+            font-weight: bold;
+            font-size: 1rem;
+        }
     </style>
 </head>
 
 <body>
-    <header>
-        <h1>Tu Curriculum Vitae</h1>
-    </header>
-    <form action="#" id="cv" method="post">
-        <label for="in">Nombre *</label>
-        <input type="text" name="nombre" id="nombre" required placeholder="Escribe tu nombre">
+    <h1>Curriculum Vitae</h1>
 
-        <label for="in">Edad</label>
-        <input type="number" name="edad" id="edad" required min="18" max="150">
-        
-        <button type="submit">Enviar</button>
-        <p>Los campos con * son obligatorios</p>
+    <form action="#" method="post" name="cv" id="cv">
+
+        <fieldset>
+            <label for="nombre">Nombre <span>*</span></label>
+            <input type="text" id="nombre" name="nombre" required placeholder="John" title="Introduzca su nombre"
+                maxlength="15">
+        </fieldset>
+
+        <fieldset>
+            <label for="apellido">Apellido <span>*</span></label>
+            <input type="text" id="apellido" name="apellido" required placeholder="Smith" title="Introduzca su apellido"
+                maxlength="20">
+        </fieldset>
+
+        <fieldset>
+            <label for="edad">Edad <span>*</span></label>
+            <input type="number" id="edad" name="edad" required placeholder="20">
+        </fieldset>
+
+        <fieldset>
+            <label for="password">Password <span>*</span></label>
+            <input type="password" id="password" name="password" required placeholder="20" min="18" max="180">
+        </fieldset>
+
+        <fieldset>
+            <label for="dni">DNI <span>*</span></label>
+            <input type="text" id="dni" name="dni" required placeholder="12345678A" pattern="\d{8} [A-Z]$"
+                maxlength="9">
+        </fieldset>
+
+        <fieldset>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required pattern=".*@.*" placeholder="john@mail.com">
+        </fieldset>
+
+        <fieldset>
+
+            <legend>Publicaciones</legend>
+
+            <label for="libros">Libros publicados</label>
+            <input type="number" name="libros" id="libros" value="0" title="Cada libro te da 10 monedas de prestigio">
+
+            <label for="articulos">Artículos publicados</label>
+            <input type="number" name="articulos" id="articulos" value="0"
+                title="Cada artículo te da 2 monedas de prestigio">
+
+            <label for="posts">Posts publicados en blogs</label>
+            <input type="number" name="posts" id="posts" value="0"
+                title="Cada post en un blog te da 1 moneda de prestigio">
+
+        </fieldset>
+        <span id="Publicaciones"></span>
+        <button type="button" onclick="validarForm()">Enviar</button>
+
+        <P>Los campos con <span>*</span> son obligatorios</P>
     </form>
 
     <script>
+        function validarForm() {
+            let nombre = document.getElementById("nombre").value;
+            let apellido = document.getElementById("apellido").value;
+            let cantPosts = parseInt(document.getElementById("posts").value);
+            let cantLibros = parseInt(document.getElementById("libros").value);
+            let cantArticulos = parseInt(document.getElementById("articulos").value);
+            let valido = true;
 
+            if (nombre == "") {
+                alert("No has introducido el nombre");
+                valido = false;
+            }
+
+            if (apellido == "") {
+                alert("No has introducido el apellido");
+                valido = false;
+            }
+
+            if (valido) {
+                document.getElementById("Publicaciones").innerHTML = `Tiene ${cantPosts+cantArticulos+cantLibros} publicaciones`
+                alert("Datos correctos");
+            }
+
+        }
     </script>
 </body>
 
