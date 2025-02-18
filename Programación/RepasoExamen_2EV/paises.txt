@@ -1,0 +1,7 @@
+ALB;Albania;28748;3038594;Tirana;Albanés
+DEU;Alemania;357022;80722792;Berlín;Alemán
+AND;Andorra;468;85660;Andorra la Vieja;Catalán, Francés, Español
+ESP;España;505370;48563476;Madrid;Español
+FRA;Francia;643801;66836154;París;Francés
+ITA;Italia;301340;62007540;Roma;Italiano
+PRT;Portugal;92090;10833816;Lisboa;Portugués 
