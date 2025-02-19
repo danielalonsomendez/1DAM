@@ -1,0 +1,238 @@
+/* Colores 
+aquamarine
+darkseagreen
+darkolivegreen
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
+  background-color: aquamarine;
+}
+
+/* HEADER */
+header {
+  background-image: url("../img/img_cabecera.png");
+  padding: 50px;
+  justify-items: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+header section {
+  background-color: aquamarine;
+  border-radius: 20px;
+  padding: 15px;
+  width: 50vw;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2rem;
+}
+
+/*MAIN*/
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+/*SECCION TODOS LOS PRODUCTOS*/
+#productos {
+  width: 95vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+#productos div {
+  border: solid darkseagreen 2px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#productos div img {
+  width: 10rem;
+  height: 8rem;
+}
+
+#productos div p {
+  text-align: center;
+  padding: 5px;
+  font-size: 1.2rem;
+}
+
+/*FORMULARIO*/
+#formulario {
+  width: 50vw;
+  background-color: darkseagreen;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+input {
+  font-size: 1.5rem;
+}
+
+fieldset {
+  border-color: aquamarine;
+  border-style: solid;
+}
+
+label,
+fieldset {
+  font-size: 1.5rem;
+  padding: 20px;
+}
+
+legend {
+  text-align: left;
+}
+
+.rojo {
+  color: red;
+}
+
+/* INPUTS: PEDIDO*/
+#pedido {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#pedido .divisor {
+  display: flex;
+  flex-direction: column;
+
+}
+
+#pedido .elemento {
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+}
+
+#pedido .elemento label {
+  padding: 0px;
+  padding-right: 20px;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.5);
+}
+
+/* PRECIO TOTAL */
+#total {
+  background-color: aquamarine;
+  font-size: 1.5rem;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+}
+
+/* BOTONES FORMULARIO */
+#botones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  font-size: 1.2rem;
+  padding: 15px;
+  border: none;
+  background-color: darkolivegreen;
+  color: white;
+  border-radius: 15px;
+  width: 30vw;
+  margin-bottom: 20px;
+}
+
+/* FOOTER */
+footer {
+  display: flex;
+  padding: 20px;
+  background-color: darkseagreen;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+footer span {
+  font-size: 1.5rem;
+}
+
+/*TOOLTIP: MENSAJE FORMULARIO*/
+.tooltip {
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  margin-left: 9px;
+  width: 320px;
+  visibility: hidden;
+  background-color: #0099ff;
+  border-radius: 4px;
+  border: 1px solid #aeaeae;
+  position: absolute;
+  z-index: 1;
+  padding: 5px;
+  margin-top: -15px;
+  opacity: 0;
+  transition: opacity 0.5s;
+  color: white;
+  border-radius: 20px;
+}
+
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 5%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent #aeaeae transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* ADAPTACIONES DISPOSITIVOS MOVILES */
+@media (max-width: 768px) {
+  #formulario {
+    width: auto;
+  }
+
+  button {
+    width: 70vw;
+  }
+
+  header section {
+    width: auto;
+  }
+
+  footer {
+    flex-direction: column;
+  }
+
+  #productos {
+    width: auto;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}

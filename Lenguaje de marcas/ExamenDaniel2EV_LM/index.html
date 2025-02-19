@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--Indicar que la página esta en español-->
+<html lang="es">
+
+<head>
+	<!--Titulo-->
+	<title>Preparados Donato - De nuestros fogones a su plato</title>
+	<!--Indicar el tipo de caracteres que usa la página-->
+	<meta charset="UTF-8">
+	<!--Indicar autor-->
+	<meta content="author" content="Daniel Alonso Mendez">
+	<!--Información al navegador sobre el tamaño de la página-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--Importar CSS-->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!--Importar JS-->
+	<script src="js/script.js"></script>
+</head>
+
+<body>
+	<!--Encabezado-->
+	<header>
+		<!--Titulo-->
+		<section>
+			<h1>Preparados Donato</h1>
+			<h3>De nuestros fogones a su plato</h3>
+		</section>
+	</header>
+
+	<main>
+		<!--Lista de productos-->
+		<section id="productos">
+			<div>
+				<p>Alcachofas</p>
+				<img src="img/alcachofas.jpg" alt="Alcachofas">
+				<p>15 €</p>
+			</div>
+			<div>
+				<p>Cardo</p>
+				<img src="img/cardo.jpg" alt="Cardo">
+				<p>12 €</p>
+			</div>
+			<div>
+				<p>Marmitako</p>
+				<img src="img/marmitako.jpg" alt="Marmitako">
+				<p>14 €</p>
+			</div>
+
+		</section>
+
+		<!--Formulario-->
+		<section id="formulario">
+			<form name="preparadosdonatoformulario" onsubmit="return validarDatos()">
+				<!--Datos de contacto-->
+				<fieldset id="datos">
+					<legend>Datos de contacto</legend>
+					<label>Nombre <span class="rojo">*</span></label><br>
+					<div class="tooltip">
+						<input type="text" name="nombre" id="nombre"><br>
+						<span class="tooltiptext">Debe introducir el nombre</span>
+					</div><br>
+					<label>Teléfono <span class="rojo">*</span></label><br>
+					<div class="tooltip">
+						<input type="phone" name="telefono" id="telefono" placeholder="678333444"><br>
+						<span class="tooltiptext">Debe introducir un teléfono</span>
+					</div><br>
+					<label>Correo electrónico</label><br>
+					<input type="email" name="email" id="email"><br>
+				</fieldset>
+				<!--Pedido-->
+
+				<fieldset id="pedido">
+					<legend>Pedido</legend>
+					<!--Checkboxes-->
+					<div class="divisor">
+						<div class="elemento">
+							<label>Alcachofas</label>
+							<input type="checkbox" name="alcachofas" id="alcachofas" onchange="calcularPrecio()">
+						</div>
+						<div class="elemento">
+							<label>Cardo</label>
+							<input type="checkbox" name="cardo" id="cardo" onchange="calcularPrecio()">
+						</div>
+						<div class="elemento">
+							<label>Marmitako</label>
+							<input type="checkbox" name="marmitako" id="marmitako" onchange="calcularPrecio()">
+						</div>
+					</div>
+					<!--Inputs de cantidad-->
+					<div class="divisor">
+						<div class="elemento">
+							<label>Cantidad</label>
+							<input type="number" name="alcachofas_cantidad" id="alcachofas_cantidad" value="0" min="0"
+								max="999" onchange="calcularPrecio()" disabled>
+						</div>
+						<div class="elemento">
+							<label>Cantidad</label>
+							<input type="number" name="cardo_cantidad" id="cardo_cantidad" value="0" min="0" max="999"
+								onchange="calcularPrecio()" disabled>
+						</div>
+						<div class="elemento">
+							<label>Cantidad</label>
+							<input type="number" name="marmitako_cantidad" id="marmitako_cantidad" value="0" min="0"
+								max="999" onchange="calcularPrecio()" disabled>
+						</div>
+					</div>
+				</fieldset>
+				<!--Total Pedido-->
+				<p id="total">Total pedido: 0€</p>
+				<!--Botones formulario-->
+				<div id="botones">
+					<button type="button" id="borrardatos" onclick="BorrarDatos()">Borrar datos</button>
+					<button type="submit" id="realizarpedido">Realizar pedido</button>
+				</div>
+
+			</form>
+
+		</section>
+	</main>
+	<!--Footer-->
+	<footer>
+		<span>© PreDonato 2025</span>
+		<span>📞 900 100 xxx - Martes a domingo, de 10:00 a 14:00 y de 18:00 a 23:00</span>
+	</footer>
+
+</body>
+
+</html>
