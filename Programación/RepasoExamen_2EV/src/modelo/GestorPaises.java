@@ -83,7 +83,6 @@ public class GestorPaises {
 		}
 		return paises;
 	}
-
 	public boolean eliminarPaises() {
 		boolean valido = false;
 		Connection conexion = null;
