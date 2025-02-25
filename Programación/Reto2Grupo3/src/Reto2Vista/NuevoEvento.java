@@ -309,7 +309,6 @@ public class NuevoEvento extends JFrame {
 		cbTipoHabitacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String Tipo = cbTipoHabitacion.getSelectedItem() + "";
-				System.out.println("aaa" + Tipo);
 				if (Tipo.equals("Doble")) {
 					TipoHabitacion = "DB";
 				} else if (Tipo.equals("Doble con uso individual")) {
@@ -519,8 +518,6 @@ public class NuevoEvento extends JFrame {
 					if (rdbtnVueloIdaVuelta.isSelected() == true) {
 						url = url + df.format(chooserVueloFechaSalidaVuelta.getDate());
 					}
-					System.out.println(url);
-
 					try {
 						Desktop.getDesktop().browse(new URI(url));
 					} catch (IOException e1) {

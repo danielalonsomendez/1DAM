@@ -222,6 +222,9 @@ public class NuevaAgencia extends JFrame {
 			agencia.setNumeroEmpleados(NumeroEmpleados);
 			if(controlador.insertarAgencia(agencia)== true) {
 				JOptionPane.showMessageDialog(null, "Agencia creada correctamente", "Correcto", JOptionPane.INFORMATION_MESSAGE);
+			} else {
+				JOptionPane.showMessageDialog(null, "La agencia no ha podido ser creada en la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
+
 			}
 		} else {
 			JOptionPane.showMessageDialog(null,"- " + String.join("\n - ", mensajeError), "Error al crear agencia ",

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-22">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="tema10_ejemplo"/>
+	<classpathentry kind="src" path="tema10_ej4"/>
+	<classpathentry kind="src" path="tema10_ej3"/>
+	<classpathentry kind="src" path="tema10_ej1"/>
+	<classpathentry kind="src" path="tema10_ej2"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

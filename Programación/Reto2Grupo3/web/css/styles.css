@@ -1,0 +1,513 @@
+/* Importar fuente "Inter" Google Fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
+}
+
+ul {
+    display: flex;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin: 0rem 0px 2rem;
+    text-transform: uppercase;
+}
+
+/* HEADER */
+header {
+    background-color: var(--coloragencia);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+}
+
+header>a {
+    color: var(--coloragenciatexto);
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    padding: .5rem 0;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+header nav ul {
+    display: flex;
+    text-decoration: none;
+    padding: 0;
+}
+
+header nav li {
+    list-style: none;
+    line-height: 0;
+}
+
+nav ul li a:hover {
+    color: var(--coloragenciatexto);
+    opacity: 0.5;
+}
+
+header nav a {
+    color: var(--coloragenciatexto);
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px 20px;
+}
+
+header nav ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+header nav ul li a {
+    display: block;
+    padding: 30px;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms ease;
+}
+
+header nav ul li a:hover {
+    color: var(--coloragenciatexto);
+}
+
+header nav>label {
+    display: none;
+    cursor: pointer;
+    color: var(--coloragenciatexto);
+    text-transform: uppercase;
+    padding: 1rem;
+    font-size: 2rem;
+}
+
+header nav input {
+    display: none;
+}
+
+#logoprincipal img {
+    max-height: 6rem;
+    margin-bottom: 2rem;
+}
+
+#logo img {
+    width: 150px;
+}
+
+/* FOOTER */
+footer {
+    color: var(--coloragenciatexto);
+    background-color: var(--coloragencia);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+footer nav ul {
+    padding: 0;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+footer nav li {
+    list-style: none;
+}
+
+footer nav ul li a {
+    display: block;
+    padding: 20px;
+    font-size: 20px;
+    color: var(--coloragenciatexto);
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+section {
+    margin: 3rem auto;
+}
+
+i {
+    width: auto;
+    margin-right: 10px;
+}
+
+.xl {
+    font-size: 4rem;
+    margin: 0;
+    width: 5rem;
+}
+
+::selection {
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+}
+
+main {
+    min-height: calc(100vh - 210px);
+}
+
+section {
+    width: 800px;
+    margin: 2rem auto;
+}
+
+button {
+    display: block;
+    background: black;
+    color: white;
+    border-radius: 2px;
+    border: none;
+    padding: .7rem;
+    width: 100%;
+    text-align: center;
+    transition: all 300ms ease;
+    margin: 2rem auto;
+}
+
+button:hover {
+    background: black;
+    color: white;
+}
+
+
+
+/* FORMULARIOS*/
+form {
+    display: flex;
+    flex-direction: column;
+}
+fieldset {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    border: none;
+    margin-bottom: 1.5rem;
+    box-sizing: border-box;
+}
+
+legend {
+    margin-bottom: .8rem;
+    font-size: 1.7rem;
+}
+
+label {
+    text-align: left;
+}
+
+label,
+button {
+    margin-bottom: 1rem;
+    font-size: 1.7rem;
+    cursor: pointer;
+}
+
+.campos {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 4rem;
+}
+
+.campos fieldset {
+    width: 46%;
+}
+
+.inline {
+    display: inline-block;
+    align-items: center;
+    padding: 0;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    gap: 10px;
+}
+
+input[type="time"],
+input[type="number"],
+input[type="text"],
+input[type="date"],
+input[type="password"],
+input[type="radio"],
+textarea,
+button,
+select {
+    border-radius: .7rem;
+    padding: .8rem;
+    border: 1px solid #959595;
+    font-family: inherit;
+    resize: vertical;
+}
+
+input[type="radio"] {
+    width: 1.3rem;
+    height: 1.3rem;
+}
+
+input[type="radio"]+label {
+    margin-right: 1rem;
+}
+
+textarea {
+    min-height: 5rem;
+}
+
+select {
+    width: 100%;
+}
+
+input[type="time"]::placeholder,
+input[type="number"]::placeholder,
+input[type="text"]::placeholder,
+input[type="date"]::placeholder,
+textarea::placeholder {
+    font-size: 1rem;
+}
+
+#vuelos,
+#vuelovuelta,
+#alojamientos,
+#otros {
+    display: none;
+}
+
+#PrecioVuelo,
+#PrecioAlojamiento,
+#PrecioOtros {
+    width: 100%;
+}
+
+.botonformulario {
+    width: 800px;
+    background-color: var(--coloragencia);
+    color: var(--coloragenciatexto);
+}
+
+.precio {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+span {
+    font-size: 1.2rem;
+    margin-left: 5px;
+}
+
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: fondo 25s infinite;
+}
+
+.modal section {
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.login {
+    width: 500px;
+    background-color: #f2f2f2;
+    box-sizing: border-box;
+}
+
+.principal {
+    width: 530px;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--coloragencia);
+}
+
+.principal h2 {
+    color: var(--coloragenciatexto)
+}
+
+#Vuelo,
+#BotonEvento,
+#Desconectar {
+    width: 300px;
+    display: flex;
+    background: #ffffff;
+    padding: 1rem;
+    border-radius: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: 1px solid grey;
+    text-decoration: none;
+    color: black;
+}
+
+#Vuelo:hover,
+#BotonEvento:hover,
+#Desconectar:hover {
+    color: black;
+}
+
+#Vuelo:hover {
+    background: linear-gradient(to right, white, rgb(1, 212, 195));
+}
+
+#BotonEvento:hover {
+    background: linear-gradient(to right, white, rgb(1, 163, 69));
+}
+
+#Desconectar:hover {
+    background: linear-gradient(to right, white, rgb(219, 2, 2));
+}
+
+
+
+
+@keyframes fondo {
+    0% {
+        background-image: url(/img/fondo1.jpg);
+    }
+
+    33% {
+        background-image: url(/img/fondo2.jpg);
+    }
+
+    66% {
+        background-image: url(/img/fondo3.jpg);
+    }
+
+    100% {
+        background-image: url(/img/fondo4.jpg);
+    }
+}
+
+@media (max-width: 768px) {
+    header nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        min-width: 100%;
+        margin: 0;
+        background: var(--coloragencia);
+        z-index: 9;
+    }
+
+    nav ul li a:hover {
+        color: var(--coloragenciatexto);
+        opacity: 0.5;
+    }
+
+    header nav a {
+        color: var(--coloragenciatexto);
+    }
+
+    header nav label {
+        display: block;
+    }
+
+    header nav input:checked+ul {
+        display: block;
+    }
+
+    section {
+        width: auto;
+        margin: 0 auto;
+    }
+
+    h1,
+    h2 {
+        text-align: center;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        min-width: auto;
+        width: 100%;
+        padding: 0 2rem;
+        box-sizing: border-box;
+    }
+
+    fieldset {
+        border: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    input[type="time"],
+    input[type="number"],
+    input[type="text"],
+    input[type="date"],
+    input[type="radio"],
+    textarea,
+    button,
+    .botonformulario,
+    select {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    input[type="radio"] {
+        width: auto;
+    }
+
+    .campos {
+        gap: 2rem;
+    }
+
+    .campos fieldset {
+        display: flex;
+        flex-wrap: wrap;
+        /* gap: 2rem; */
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        flex-direction: column;
+    }
+
+    header nav ul {
+        top: 100%;
+    }
+}
