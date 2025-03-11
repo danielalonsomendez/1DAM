@@ -1,9 +1,11 @@
 package Vista_EJ4;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import Controlador_EJ4.Controlador;
 import Modelo_EJ4.Gato;
 import Modelo_EJ4.Mascota;
 import Modelo_EJ4.Perro;
@@ -11,8 +13,10 @@ import Modelo_EJ4.Perro;
 public class Menu {
 	Scanner teclado = new Scanner(System.in);
 	ArrayList<Mascota> mascotas = new ArrayList<Mascota>();
+	Controlador controlador = new Controlador();
 
 	public void verMenu() {
+		mascotas =rellenarMascotas();
 		int opcion = 0;
 		do {
 			opcion = elegirOpcion(teclado);
@@ -37,11 +41,22 @@ public class Menu {
 		} while (opcion != 6);
 		teclado.close();
 	}
+	public static ArrayList<Mascota> rellenarMascotas() {
+	    Perro p1 = new Perro(1, "Lur", 6, "12345679K", "Pastor alemán", false);
+	    Perro p2 = new Perro(2, "Beethove", 6, "56478936G", "San bernardo", true);
+	    Perro p3 = new Perro(3, "Pongo", 8, "78965847K", "Dálmata", false);
+	    Gato g1 = new Gato(1, "Baltzi", 5, "12345679K", "Blanco", 'L');
+	    Gato g2 = new Gato(2, "Bola", 4, "14785469S", "Tricolor", 'C');
+	    Gato g3 = new Gato(3, "Garfield", 4, "12345679K", "Marrón", 'M');
+
+	    ArrayList<Mascota> mascotas = new ArrayList<>(Arrays.asList(g2, g1, g3, p3, p1, p2));  // Nuevo orden
+	    return mascotas;
+	}
 
 	public int elegirOpcion(Scanner teclado) {
 		System.out.println("       MENÚ MASCOTA");
 		System.out.println("       --------------");
-		System.out.println("1. Añadir mascota:.");
+		System.out.println("1. Añadir mascota.");
 		System.out.println("2. Mostrar mascotas");
 		System.out.println("3. Eliminar mascota");
 		System.out.println("4. Eliminar mascota por DNI del dueño");
@@ -91,7 +106,6 @@ public class Menu {
 
 	public void mostrarMascotasDNI() {
 		String DNI = pedirDNI(teclado);
-
 		System.out.println("TODAS LOS MASCOTAS DE " + DNI + " \n------------");
 		for (Mascota mascota : mascotas) {
 			if (mascota.getDNI().equals(DNI)) {
@@ -99,46 +113,36 @@ public class Menu {
 			}
 		}
 	}
+
 	public void eliminarMascota() {
 		int Identificador = pedirIdentificador(teclado);
-		for (Mascota mascota : mascotas) {
-			if (mascota.getIdentificador() == Identificador) {
-			mascotas.remove(mascota);
-			}
-		}
+		controlador.eliminarMascotaID(mascotas, Identificador);
 	}
+
 	public void eliminarMascotaDNI() {
 		String DNI = pedirDNI(teclado);
-		for (Mascota mascota : mascotas) {
-			if (mascota.getDNI().equals(DNI)) {
-				mascotas.remove(mascota);
-			}
-		}
+		controlador.eliminarMascotaDNI(mascotas, DNI);
 	}
+
 	public Mascota pedirMascota(Scanner teclado) {
-		int Identificador;
-		String Nombre;
-		int Edad;
-		String DNI;
 		System.out.println("Introduce el Identificador: ");
-		Identificador = teclado.nextInt();
+		int Identificador = teclado.nextInt();
 		teclado.nextLine();
 		System.out.println("Introduce el nombre: ");
-		Nombre = teclado.nextLine();
+		String Nombre = teclado.nextLine();
 		System.out.println("Introduce el Edad: ");
-		Edad = teclado.nextInt();
+		int Edad = teclado.nextInt();
 		teclado.nextLine();
 		System.out.println("Introduce el DNI: ");
-		DNI = teclado.nextLine();
+		String DNI = teclado.nextLine();
 		return new Mascota(Identificador, Nombre, Edad, DNI);
 	}
 
 	public Perro pedirPerro(Scanner teclado) {
 		Mascota mascota = pedirMascota(teclado);
-		String raza;
 		boolean pulgas;
 		System.out.println("Introduce la raza del perro: ");
-		raza = teclado.nextLine();
+		String raza = teclado.nextLine();
 		System.out.println("Introduce si tiene pulgas (Escribe SI si tiene): ");
 
 		String pulgasN = teclado.nextLine();
@@ -154,16 +158,15 @@ public class Menu {
 
 	public Gato pedirGato(Scanner teclado) {
 		Mascota mascota = pedirMascota(teclado);
-		String color;
-		char pelo;
 		System.out.println("Introduce la color del gato: ");
-		color = teclado.nextLine();
+		String color = teclado.nextLine();
 		System.out.println("Introduce el pelo del gato (L (largo), M (medio) o C (corto)): ");
-		pelo = teclado.nextLine().charAt(0);
+		char pelo = teclado.nextLine().charAt(0);
 
 		return new Gato(mascota.getIdentificador(), mascota.getNombre(), mascota.getEdad(), mascota.getDNI(), color,
 				pelo);
 	}
+
 	private int pedirIdentificador(Scanner teclado) {
 		int num = -1;
 		do {
@@ -177,6 +180,7 @@ public class Menu {
 		} while (num < 0);
 		return num;
 	}
+
 	private String pedirDNI(Scanner teclado) {
 		teclado.nextLine();
 		System.out.print("Introduce DNI del dueño: ");

@@ -12,6 +12,9 @@ public class Gato extends Mascota {
 		this.color = color;
 		this.pelo = pelo;
 	}
+	public static boolean validarPelo(String pelo) {
+		return pelo.equals("L")||pelo.equals("M")||pelo.equals("C") ;
+	}
 	
 	public String getColor() {
 		return color;

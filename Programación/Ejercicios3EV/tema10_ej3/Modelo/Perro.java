@@ -1,6 +1,5 @@
 package Modelo;
 
-import Modelo_EJ4.Mascota;
 
 public class Perro extends Mascota {
 	protected String raza;
@@ -11,6 +10,11 @@ public class Perro extends Mascota {
 		this.raza = raza;
 		this.pulgas = pulgas;
 	}
+	
+	public static boolean validarPulgas(String pulgas) {
+		return pulgas.equals("SI") ||  pulgas.equals("NO");
+	}
+	
 	public String getRaza() {
 		return raza;
 	}
