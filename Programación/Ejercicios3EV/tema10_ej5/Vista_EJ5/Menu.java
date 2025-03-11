@@ -1,4 +1,4 @@
-package Vista_EJ4;
+package Vista_EJ5;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,11 +12,10 @@ import Modelo_EJ5.Perro;
 
 public class Menu {
 	Scanner teclado = new Scanner(System.in);
-	ArrayList<Mascota> mascotas = new ArrayList<Mascota>();
 	Controlador controlador = new Controlador();
+	ArrayList<Mascota> mascotas = new ArrayList<Mascota>();
 
 	public void verMenu() {
-		mascotas =rellenarMascotas();
 		int opcion = 0;
 		do {
 			opcion = elegirOpcion(teclado);
@@ -94,7 +93,7 @@ public class Menu {
 			mascota = pedirGato(teclado);
 		}
 
-		mascotas.add(mascota);
+		controlador.añadirMascota(mascota);
 	}
 
 	public void mostrarTodasMascotas() {

@@ -1,8 +1,9 @@
-package Controlador_EJ4;
+package Controlador_EJ5;
 
 import java.util.ArrayList;
 
-import Modelo_EJ4.Mascota;
+import Modelo_EJ5.Gestor;
+import Modelo_EJ5.Mascota;
 
 public class Controlador {
 	public void eliminarMascotaID(ArrayList<Mascota> mascotas,int Identificador) {
@@ -18,5 +19,9 @@ public class Controlador {
 				mascotas.remove(mascota);
 			}
 		}
+	}
+	public boolean añadirMascota(Mascota mascota) {
+		Gestor gestor = new Gestor();
+		return gestor.añadirMascota(mascota);
 	}
 }

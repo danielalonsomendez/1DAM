@@ -1,6 +1,6 @@
-package Modelo_EJ4;
+package Modelo_EJ5;
 
-import Modelo_EJ4.Mascota;
+import Modelo_EJ5.Mascota;
 
 public class Mascota {
 	protected int identificador;

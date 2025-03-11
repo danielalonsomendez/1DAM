@@ -1,4 +1,4 @@
-package Modelo_EJ4;
+package Modelo_EJ5;
 
 import Modelo_EJ5.Mascota;
 

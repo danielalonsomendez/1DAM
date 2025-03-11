@@ -1,5 +1,7 @@
 package Modelo_EJ4;
 
+import Modelo_EJ5.Mascota;
+
 public class Gato extends Mascota {
 
 	protected String color;
@@ -9,6 +11,9 @@ public class Gato extends Mascota {
 		super(identificador, nombre, edad, dNI);
 		this.color = color;
 		this.pelo = pelo;
+	}
+	public static boolean validarPelo(String pelo) {
+		return pelo.equals("L")||pelo.equals("M")||pelo.equals("C") ;
 	}
 	
 	public String getColor() {
