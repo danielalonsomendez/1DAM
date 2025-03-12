@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<factura numero="123">
+    <cliente>
+        <biblioteca>Biblioteca de Bidebarrieta</biblioteca>
+        <cif>S-33444555-A</cif>
+        <telefono>900 800 xxx</telefono>
+    </cliente>
+    <detalles>
+        <articulo tipo="Libro">AW7</articulo>
+        <cantidad>1</cantidad>
+        <precio moneda="€">21</precio>
+    </detalles>
+</factura>

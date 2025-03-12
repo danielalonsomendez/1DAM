@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<destinos>
+    <destino continente="Asia">
+        <pais>India</pais>
+        <ciudad>Nueva Delhi</ciudad>
+    </destino>
+    <destino continente="Europa">
+        <pais>Portugal</pais>
+        <ciudad>Lisboa</ciudad>
+    </destino>
+    <destino continente="Africa">
+        <pais>Egipto</pais>
+        <ciudad>El Cairo</ciudad>
+    </destino>
+</destinos>
