@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<eventos>
+    <evento descripcion="IBM presenta el PC">
+        <dia>12</dia>
+        <mes>8</mes>
+        <ano>1981</ano>
+    </evento>
+        <evento descripcion="Creación de Google">
+        <dia>4</dia>
+        <mes>9</mes>
+        <ano>1998</ano>
+    </evento>
+        <evento descripcion="Creación de Facebook">
+        <dia>4</dia>
+        <mes>2</mes>
+        <ano>2004</ano>
+    </evento>
+        <evento descripcion="Lanzamiento de Instragram">
+        <dia>6</dia>
+        <mes>10</mes>
+        <ano>2010</ano>
+    </evento>
+</eventos>
