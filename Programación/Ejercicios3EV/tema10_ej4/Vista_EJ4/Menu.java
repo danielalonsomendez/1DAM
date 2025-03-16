@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import Controlador_EJ5.Controlador;
+import Controlador_EJ4.Controlador;
 import Modelo_EJ5.Gato;
 import Modelo_EJ5.Mascota;
 import Modelo_EJ5.Perro;

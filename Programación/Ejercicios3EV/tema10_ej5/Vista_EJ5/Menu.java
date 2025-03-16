@@ -13,7 +13,6 @@ import Modelo_EJ5.Perro;
 public class Menu {
 	Scanner teclado = new Scanner(System.in);
 	Controlador controlador = new Controlador();
-	ArrayList<Mascota> mascotas = new ArrayList<Mascota>();
 
 	public void verMenu() {
 		int opcion = 0;
@@ -39,17 +38,6 @@ public class Menu {
 			}
 		} while (opcion != 6);
 		teclado.close();
-	}
-	public static ArrayList<Mascota> rellenarMascotas() {
-	    Perro p1 = new Perro(1, "Lur", 6, "12345679K", "Pastor alemán", false);
-	    Perro p2 = new Perro(2, "Beethove", 6, "56478936G", "San bernardo", true);
-	    Perro p3 = new Perro(3, "Pongo", 8, "78965847K", "Dálmata", false);
-	    Gato g1 = new Gato(1, "Baltzi", 5, "12345679K", "Blanco", 'L');
-	    Gato g2 = new Gato(2, "Bola", 4, "14785469S", "Tricolor", 'C');
-	    Gato g3 = new Gato(3, "Garfield", 4, "12345679K", "Marrón", 'M');
-
-	    ArrayList<Mascota> mascotas = new ArrayList<>(Arrays.asList(g2, g1, g3, p3, p1, p2));  // Nuevo orden
-	    return mascotas;
 	}
 
 	public int elegirOpcion(Scanner teclado) {
@@ -85,18 +73,20 @@ public class Menu {
 		String tipoMascota;
 		Mascota mascota = null;
 		teclado.nextLine();
-		System.out.println("Introduce P (Perro) G (Gato)");
-		tipoMascota = teclado.nextLine();
+		do {
+		System.out.print("Introduce P (Perro) G (Gato): ");
+		tipoMascota = teclado.nextLine().toUpperCase();
 		if (tipoMascota.equals("P")) {
 			mascota = pedirPerro(teclado);
 		} else if (tipoMascota.equals("G")) {
 			mascota = pedirGato(teclado);
 		}
-
+		}while(tipoMascota.equals("P") == false && tipoMascota.equals("G")==false);
 		controlador.añadirMascota(mascota);
 	}
 
 	public void mostrarTodasMascotas() {
+		ArrayList<Mascota> mascotas = controlador.todasMascotas();
 		System.out.println("TODAS LOS MASCOTAS\n------------");
 		for (Mascota mascota : mascotas) {
 			System.out.println(mascota);
@@ -105,6 +95,7 @@ public class Menu {
 
 	public void mostrarMascotasDNI() {
 		String DNI = pedirDNI(teclado);
+		ArrayList<Mascota> mascotas = controlador.mascotasDNI(DNI);
 		System.out.println("TODAS LOS MASCOTAS DE " + DNI + " \n------------");
 		for (Mascota mascota : mascotas) {
 			if (mascota.getDni().equals(DNI)) {
@@ -115,12 +106,12 @@ public class Menu {
 
 	public void eliminarMascota() {
 		int Identificador = pedirIdentificador(teclado);
-		controlador.eliminarMascotaID(mascotas, Identificador);
+		controlador.eliminarMascotaID( Identificador);
 	}
 
 	public void eliminarMascotaDNI() {
 		String DNI = pedirDNI(teclado);
-		controlador.eliminarMascotaDNI(mascotas, DNI);
+		controlador.eliminarMascotaDNI(DNI);
 	}
 
 
@@ -128,15 +119,15 @@ public class Menu {
 		String Nombre;
 		int Edad;
 		String DNI;
-		System.out.println("Introduce el nombre: ");
+		System.out.print("Introduce el nombre: ");
 		Nombre = teclado.nextLine();
 		do {
-			System.out.println("Introduce el edad: ");
+			System.out.print("Introduce el edad: ");
 			Edad = teclado.nextInt();
 			teclado.nextLine();
 		} while (!Mascota.validarEdad(Edad));
 		do {
-			System.out.println("Introduce el DNI: ");
+			System.out.print("Introduce el DNI: ");
 			DNI = teclado.nextLine().trim().toUpperCase();
 		} while (!Mascota.validarDNI(DNI));
 		return new Mascota(Nombre, Edad, DNI);
@@ -147,10 +138,10 @@ public class Menu {
 		String raza;
 		boolean pulgas;
 		String pulgasN;
-		System.out.println("Introduce la raza del perro: ");
+		System.out.print("Introduce la raza del perro: ");
 		raza = teclado.nextLine();
 		do {
-		System.out.println("Introduce si tiene pulgas (Escribe SI si tiene): ");
+		System.out.print("Introduce si tiene pulgas (Escribe SI si tiene): ");
 		pulgasN = teclado.nextLine().trim().toUpperCase();
 		} while (!Perro.validarPulgas(pulgasN));
 
@@ -168,9 +159,9 @@ public class Menu {
 		Mascota mascota = pedirMascota(teclado);
 		String color;
 		char pelo;
-		System.out.println("Introduce la color del gato: ");
+		System.out.print("Introduce la color del gato: ");
 		color = teclado.nextLine();
-		System.out.println("Introduce el pelo del gato (L (largo), M (medio) o C (corto)): ");
+		System.out.print("Introduce el pelo del gato (L (largo), M (medio) o C (corto)): ");
 		pelo = teclado.nextLine().trim().toUpperCase().charAt(0);
 
 		return new Gato(mascota.getIdentificador(), mascota.getNombre(), mascota.getEdad(), mascota.getDni(), color,

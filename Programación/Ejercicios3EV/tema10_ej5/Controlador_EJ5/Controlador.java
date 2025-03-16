@@ -6,22 +6,25 @@ import Modelo_EJ5.Gestor;
 import Modelo_EJ5.Mascota;
 
 public class Controlador {
-	public void eliminarMascotaID(ArrayList<Mascota> mascotas,int Identificador) {
-		for (Mascota mascota : mascotas) {
-			if (mascota.getIdentificador() == Identificador) {
-				mascotas.remove(mascota);
-			}
-		}
+	public boolean eliminarMascotaID(int Id) {
+		Gestor gestor = new Gestor();
+		return gestor.eliminarMascotaID(Id);
 	}
-	public void eliminarMascotaDNI(ArrayList<Mascota> mascotas,String DNI) {
-		for (Mascota mascota : mascotas) {
-			if (mascota.getDni().equals(DNI)) {
-				mascotas.remove(mascota);
-			}
-		}
+	public boolean eliminarMascotaDNI(String DNI) {
+	
+		Gestor gestor = new Gestor();
+		return gestor.eliminarMascotaDNI(DNI);
 	}
 	public boolean añadirMascota(Mascota mascota) {
 		Gestor gestor = new Gestor();
 		return gestor.añadirMascota(mascota);
+	}
+	public ArrayList<Mascota> todasMascotas() {
+		Gestor gestor = new Gestor();
+		return gestor.todasMascotas();
+	}
+	public ArrayList<Mascota> mascotasDNI(String Dni) {
+		Gestor gestor = new Gestor();
+		return gestor.mascotasDNI(Dni);
 	}
 }

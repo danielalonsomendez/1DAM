@@ -2,7 +2,7 @@ package Controlador_EJ4;
 
 import java.util.ArrayList;
 
-import Modelo_EJ4.Mascota;
+import Modelo_EJ5.Mascota;
 
 public class Controlador {
 	public void eliminarMascotaID(ArrayList<Mascota> mascotas,int Identificador) {
