@@ -9,7 +9,7 @@ public class Mascota {
 	protected String dni;
 	static int cont;
 
-	public Mascota( String nombre, int edad, String dni) {
+	public Mascota(String nombre, int edad, String dni) {
 		super();
 		this.identificador = cont++;
 		this.nombre = nombre;
@@ -18,7 +18,7 @@ public class Mascota {
 	}
 	public Mascota(int identificador, String nombre, int edad, String dni) {
 		super();
-		this.identificador = cont++;
+		this.identificador = identificador;
 		this.nombre = nombre;
 		this.edad = edad;
 		this.dni = dni;

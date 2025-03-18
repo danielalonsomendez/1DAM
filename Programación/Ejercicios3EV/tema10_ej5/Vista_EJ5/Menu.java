@@ -106,7 +106,7 @@ public class Menu {
 
 	public void eliminarMascota() {
 		int Identificador = pedirIdentificador(teclado);
-		controlador.eliminarMascotaID( Identificador);
+		controlador.eliminarMascotaID(Identificador);
 	}
 
 	public void eliminarMascotaDNI() {
