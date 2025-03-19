@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fichero 03</title>
+    <style>
+        table {
+            background-color: black;
+            color: white;
+            margin-top: 20px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        a {
+            color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="file" onchange="leeFich(this)">
+    <br>
+    <table id="mostrarInfo"></table>
+
+    <script>
+        function leeFich(entrada_input) {
+
+            const mostrarInfo = document.getElementById('mostrarInfo');
+            const fich = entrada_input.files[0];
+            // Definimos un lector para el fichero
+            const lector = new FileReader();
+
+            // Cuando se cargue el fichero...
+            lector.onload = function (evento) {
+                if (fich.type == "text/csv") {
+                    let lineas = evento.target.result.split("\n");
+                    for (let linea in lineas) {
+                        let datos = lineas[linea].split(",");
+                        let filas = "";
+                        for (let dato in datos) {
+                            if (datos[dato] != "") {
+                                let esunUrl = datos[dato].match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
+                                if (esunUrl != null) {
+                                    filas += `<td><a href="${datos[dato]}">${datos[dato]}</a></td>`
+                                } else {
+                                    filas += `<td>${datos[dato]}</td>`
+                                }
+                            }
+                        }
+                        mostrarInfo.innerHTML += `<tr>${filas}</tr>`
+
+
+                    }
+
+                }
+            }
+            lector.readAsText(fich);
+
+        }
+    </script>
+
+</body>
+
+</html>

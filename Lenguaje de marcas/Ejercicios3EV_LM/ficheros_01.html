@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fichero 01</title>
+</head>
+
+<body>
+
+    <input type="file" onchange="leeFich(this)">
+    <br>
+    <div id="mostrarInfo"></div>
+
+    <script>
+        function leeFich(entrada_input) {
+
+            const mostrarInfo = document.getElementById('mostrarInfo');
+            const fich = entrada_input.files[0];
+            // Definimos un lector para el fichero
+            const lector = new FileReader();
+
+            // Cuando se cargue el fichero...
+            lector.onload = function (evento) {
+                if (fich.type == "text/csv") {
+                    // El contenido del archivo como texto
+                    const contenidoFichero = evento.target.result;
+                    let lineas = contenidoFichero.split("\n");
+                    for (let linea in lineas) {
+                        let datos = lineas[linea].split(",");
+                        for (let dato in datos) {
+                            mostrarInfo.innerHTML += datos[dato]+"<br>"
+                        }
+                    }
+
+                }
+            }
+            lector.readAsText(fich);
+
+        }
+    </script>
+
+</body>
+
+</html>
