@@ -6,6 +6,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="tema10_ejemplo"/>
+	<classpathentry kind="src" path="tema10_extras_C"/>
 	<classpathentry kind="src" path="tema10_ej7"/>
 	<classpathentry kind="src" path="tema10_ej6"/>
 	<classpathentry kind="src" path="tema10_ej5"/>
