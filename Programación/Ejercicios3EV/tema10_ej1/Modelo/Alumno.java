@@ -1,5 +1,7 @@
 package Modelo;
 
+import Modelo.Persona;
+
 public class Alumno extends Persona {
 
 	private String grupo;
