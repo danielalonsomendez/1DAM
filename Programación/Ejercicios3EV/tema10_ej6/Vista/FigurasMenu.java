@@ -6,12 +6,11 @@ import java.util.Scanner;
 import Modelo.Punto;
 import Modelo.Rectangulo;
 import Modelo.Triangulo;
+import Modelo_EJ5W.Mascota;
 import Modelo.Circulo;
 import Modelo.Cuadrado;
 import Modelo.Eclipse;
 import Modelo.Figura;
-
-import Modelo_EJ5.Mascota;
 
 public class FigurasMenu {
 	Scanner teclado = new Scanner(System.in);

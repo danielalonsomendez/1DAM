@@ -1,4 +1,4 @@
-package Modelo_EJ5;
+package Modelo_EJ5W;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,11 +8,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import Modelo_EJ5.DBUtils;
-import Modelo_EJ5.Gato;
-import Modelo_EJ5.Mascota;
-import Modelo_EJ5.Perro;
-import Modelo_EJ5.SQLQueries;
+import Modelo_EJ5W.DBUtils;
+import Modelo_EJ5W.Gato;
+import Modelo_EJ5W.Mascota;
+import Modelo_EJ5W.Perro;
+import Modelo_EJ5W.SQLQueries;
 
 public class Gestor {
 	public boolean insertar(String sql) {
@@ -136,15 +136,8 @@ public class Gestor {
 		return selectMascotas(SQLQueries.SELECT_MASCOTAS);
 	}
 
-	public ArrayList<Mascota> mascotasDNI(String dni) {
-		return selectMascotas(SQLQueries.SELECT_MASCOTAS_DNI + "'" + dni + "'");
-	}
-
 	public boolean eliminarMascotaID(int Id) {
 		return eliminar(SQLQueries.DELETE_ID_MASCOTA + "'" + Id + "'");
 	}
 
-	public boolean eliminarMascotaDNI(String dni) {
-		return eliminar(SQLQueries.DELETE_DNI_MASCOTA + "'" + dni + "'");
-	}
 }

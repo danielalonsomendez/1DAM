@@ -1,6 +1,6 @@
 package Modelo;
 
-import Modelo_EJ5.Mascota;
+import Modelo_EJ5W.Mascota;
 
 public class Gato extends Mascota {
 

@@ -6,7 +6,16 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="ud9Ejer05"/>
+	<classpathentry kind="src" path="ud9Ejer03"/>
+	<classpathentry kind="src" path="ud9Ejer01"/>
 	<classpathentry kind="lib" path="com.jgoodies.common_1.8.1.v20240327-0800.jar"/>
 	<classpathentry kind="lib" path="com.jgoodies.forms_1.9.0.v20240327-0800.jar"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-8.0.25.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="RepasoExamen_2EV"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

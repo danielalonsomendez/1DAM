@@ -19,5 +19,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="src" path="tema10_ej5_windowbuilder"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
