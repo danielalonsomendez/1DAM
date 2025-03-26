@@ -2,6 +2,8 @@ package Modelo;
 
 import java.util.ArrayList;
 
+import Modelo_Vehiculos.Coche;
+
 public class JefeDeZona extends Empleado{
 	private Coche coche;
 	private Secretario secretario;

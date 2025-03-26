@@ -1,6 +1,8 @@
 package Vista_EJ5W;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Color;
@@ -8,12 +10,15 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import java.awt.HeadlessException;
+
 import javax.swing.JButton;
 import Controlador_EJ5W.Controlador;
 import Modelo_EJ5W.Gato;
 import Modelo_EJ5W.Perro;
 
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
@@ -151,12 +156,17 @@ public class NuevoPerro extends JFrame {
 	}
 
 	public boolean validar() {
+		ArrayList<String> mensajeError = new ArrayList<String>();
 		String Nombre = txtNombre.getText();
-		String Edad = textFieldEdad.getText();
+		int Edad=0;
+		try {
+		 Edad = Integer.parseInt(textFieldEdad.getText());
+		}catch(InputMismatchException e) {
+			mensajeError.add("Edad tiene que ser un número");
+		}
 		String DNI = textFieldDNI.getText();
 		String Raza = textFieldRaza.getText();
 		boolean Pulgas = false;
-		ArrayList<String> mensajeError = new ArrayList<String>();
 
 		if (rdbtnNo.isSelected()) {
 			Pulgas = true;
@@ -165,11 +175,10 @@ public class NuevoPerro extends JFrame {
 		} else {
 			mensajeError.add("Pulgas no puede estar vacio");
 		}
-		
 		if ((Nombre.length() >= 1 || Nombre.length() >= 30) == false) {
 			mensajeError.add("Nombre no puede estar vacio");
 		}
-		if (Edad.length() == 0 || Gato.validarEdad(Integer.parseInt(Edad)) == false) {
+		if (Gato.validarEdad(Edad) == false) {
 			mensajeError.add("Edad no puede estar vacio");
 		}
 		if (DNI.length() == 0 || Gato.validarDNI(DNI) == false) {
@@ -179,13 +188,21 @@ public class NuevoPerro extends JFrame {
 			mensajeError.add("Raza no puede estar vacio");
 		}
 		if (mensajeError.size() == 0) {
-			Perro perro = new Perro(0, Nombre, Integer.parseInt(Edad), DNI, Raza, Pulgas);
-			if (controlador.añadirMascota(perro) == true) {
-				dispose();
-				Mascotas ventana = new Mascotas();
-				ventana.setVisible(true);
-				JOptionPane.showMessageDialog(null, "¡Mascota creada correctamente!", "Mascotas",
-						JOptionPane.INFORMATION_MESSAGE);
+			Perro perro = new Perro(0, Nombre, Edad, DNI, Raza, Pulgas);
+			try {
+				if (controlador.añadirMascota(perro) == true) {
+					dispose();
+					Mascotas ventana = new Mascotas();
+					ventana.setVisible(true);
+					JOptionPane.showMessageDialog(null, "¡Mascota creada correctamente!", "Mascotas",
+							JOptionPane.INFORMATION_MESSAGE);
+				}
+			}catch (SQLException sqle) {
+				JOptionPane.showMessageDialog(null,"Error con la base de datos" + sqle.getMessage(), "Error",
+						JOptionPane.ERROR_MESSAGE);
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(null,"Error génerico" + e.getMessage(), "Error",
+						JOptionPane.ERROR_MESSAGE);
 			}
 		} else {
 			JOptionPane.showMessageDialog(null, " - " + String.join("\n - ", mensajeError), "Error al crear mascota",

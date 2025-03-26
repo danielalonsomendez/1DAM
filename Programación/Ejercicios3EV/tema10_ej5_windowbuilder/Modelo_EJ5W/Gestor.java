@@ -15,7 +15,7 @@ import Modelo_EJ5W.Perro;
 import Modelo_EJ5W.SQLQueries;
 
 public class Gestor {
-	public boolean insertar(String sql) {
+	public boolean insertar(String sql) throws SQLException,Exception {
 		boolean valido = false;
 		Connection conexion = null;
 		Statement sentencia = null;
@@ -27,21 +27,21 @@ public class Gestor {
 			sentencia.executeUpdate(sql);
 			valido = true;
 		} catch (SQLException sqle) {
-			System.out.println("Error con la base de datos " + sqle.getMessage());
+			throw new SQLException(sqle);
 		} catch (Exception e) {
-			System.out.println("Error generico " + e.getMessage());
+			throw new Exception(e);
 		}
 
 		try {
 			sentencia.close();
 			conexion.close();
 		} catch (SQLException sqle) {
-			System.out.println(" Error al cerrar la conexion.");
+			throw new SQLException(sqle);
 		}
 		return valido;
 	}
 
-	public ResultSet select(String sql) {
+	public ResultSet select(String sql) throws SQLException,Exception {
 		try {
 			Class.forName(DBUtils.DRIVER);
 			Connection conexion = DriverManager.getConnection(DBUtils.URL, DBUtils.USER, DBUtils.PASSWORD);
@@ -49,15 +49,14 @@ public class Gestor {
 			ResultSet resultSet = sentencia.executeQuery();
 			return resultSet;
 		} catch (SQLException sqle) {
-			System.out.println("Error con la base de datos" + sqle.getMessage());
+			throw new SQLException(sqle);
 		} catch (Exception e) {
-			System.out.println("Error génerico" + e.getMessage());
+			throw new Exception(e);
 		}
-
-		return null;
+		
 	}
 
-	public boolean eliminar(String sql) {
+	public boolean eliminar(String sql) throws SQLException,Exception  {
 		try {
 			Class.forName(DBUtils.DRIVER);
 			Connection conexion = DriverManager.getConnection(DBUtils.URL, DBUtils.USER, DBUtils.PASSWORD);
@@ -69,15 +68,13 @@ public class Gestor {
 			conexion.close();
 			return true;
 		} catch (SQLException sqle) {
-			System.out.println("Error con la base de datos " + sqle.getMessage());
+			throw new SQLException(sqle);
 		} catch (Exception e) {
-			System.out.println("Error generico " + e.getMessage());
+			throw new Exception(e);
 		}
-		return false;
-
 	}
 
-	public int maxMascota() {
+	public int maxMascota() throws NumberFormatException,SQLException,Exception  {
 		try {
 			ResultSet resultSet = select(SQLQueries.SELECT_MAX_MASCOTA);
 			if (resultSet.isBeforeFirst() && resultSet.next()) {
@@ -85,14 +82,16 @@ public class Gestor {
 			}
 			resultSet.close();
 		} catch (NumberFormatException e) {
-			e.printStackTrace();
+			throw new NumberFormatException();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new SQLException(e);
+		} catch (Exception e) {
+			throw new Exception(e);
 		}
 		return 0;
 	}
 
-	public boolean añadirMascota(Mascota mascota) {
+	public boolean añadirMascota(Mascota mascota) throws SQLException,Exception  {
 		boolean valido = insertar(SQLQueries.INSERT_MASCOTA + mascota.getNombre() + SQLQueries.SEPARATOR
 				+ mascota.getEdad() + SQLQueries.SEPARATOR + mascota.getDni() + SQLQueries.END_BLOCK);
 		if (valido) {
@@ -110,7 +109,7 @@ public class Gestor {
 		return valido;
 	}
 
-	public ArrayList<Mascota> selectMascotas(String sql) {
+	public ArrayList<Mascota> selectMascotas(String sql)  throws SQLException,Exception {
 		ArrayList<Mascota> mascotas = new ArrayList<Mascota>();
 		;
 
@@ -126,17 +125,19 @@ public class Gestor {
 				}
 			}
 			rs.close();
-		} catch (SQLException e) {
-			System.out.println("Error con la base de datos" + e.getMessage());
+		}  catch (SQLException sqle) {
+			throw new SQLException(sqle);
+		} catch (Exception e) {
+			throw new Exception(e);
 		}
 		return mascotas;
 	}
 
-	public ArrayList<Mascota> todasMascotas() {
+	public ArrayList<Mascota> todasMascotas() throws SQLException,Exception  {
 		return selectMascotas(SQLQueries.SELECT_MASCOTAS);
 	}
 
-	public boolean eliminarMascotaID(int Id) {
+	public boolean eliminarMascotaID(int Id)  throws SQLException,Exception {
 		return eliminar(SQLQueries.DELETE_ID_MASCOTA + "'" + Id + "'");
 	}
 

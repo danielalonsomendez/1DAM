@@ -1,5 +1,6 @@
 package Vista_EJ5;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.InputMismatchException;
@@ -82,11 +83,24 @@ public class Menu {
 			mascota = pedirGato(teclado);
 		}
 		}while(tipoMascota.equals("P") == false && tipoMascota.equals("G")==false);
-		controlador.añadirMascota(mascota);
+		try {
+			controlador.añadirMascota(mascota);
+		} catch (SQLException sqle) {
+			System.out.println("Error con la base de datos" + sqle.getMessage());
+		} catch (Exception e) {
+			System.out.println("Error génerico" + e.getMessage());
+		}
 	}
 
 	public void mostrarTodasMascotas() {
-		ArrayList<Mascota> mascotas = controlador.todasMascotas();
+		ArrayList<Mascota> mascotas = null;
+		try {
+			mascotas = controlador.todasMascotas();
+		} catch (SQLException sqle) {
+			System.out.println("Error con la base de datos" + sqle.getMessage());
+		} catch (Exception e) {
+			System.out.println("Error génerico" + e.getMessage());
+		}
 		System.out.println("TODAS LOS MASCOTAS\n------------");
 		for (Mascota mascota : mascotas) {
 			System.out.println(mascota);
@@ -95,7 +109,14 @@ public class Menu {
 
 	public void mostrarMascotasDNI() {
 		String DNI = pedirDNI(teclado);
-		ArrayList<Mascota> mascotas = controlador.mascotasDNI(DNI);
+		ArrayList<Mascota> mascotas = null;
+		try {
+			mascotas = controlador.mascotasDNI(DNI);
+		} catch (SQLException sqle) {
+			System.out.println("Error con la base de datos" + sqle.getMessage());
+		} catch (Exception e) {
+			System.out.println("Error génerico" + e.getMessage());
+		}
 		System.out.println("TODAS LOS MASCOTAS DE " + DNI + " \n------------");
 		for (Mascota mascota : mascotas) {
 			if (mascota.getDni().equals(DNI)) {
@@ -106,12 +127,24 @@ public class Menu {
 
 	public void eliminarMascota() {
 		int Identificador = pedirIdentificador(teclado);
-		controlador.eliminarMascotaID(Identificador);
+		try {
+			controlador.eliminarMascotaID(Identificador);
+		} catch (SQLException sqle) {
+			System.out.println("Error con la base de datos" + sqle.getMessage());
+		} catch (Exception e) {
+			System.out.println("Error génerico" + e.getMessage());
+		}
 	}
 
 	public void eliminarMascotaDNI() {
 		String DNI = pedirDNI(teclado);
-		controlador.eliminarMascotaDNI(DNI);
+		try {
+			controlador.eliminarMascotaDNI(DNI);
+		} catch (SQLException sqle) {
+			System.out.println("Error con la base de datos" + sqle.getMessage());
+		} catch (Exception e) {
+			System.out.println("Error génerico" + e.getMessage());
+		}
 	}
 
 

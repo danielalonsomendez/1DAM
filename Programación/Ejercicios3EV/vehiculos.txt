@@ -1,0 +1,35 @@
+Tipo: Coche
+Id: 1
+Marca: Toyota
+Modelo: Corolla
+Puertas: 4
+
+Tipo: Coche
+Id: 2
+Marca: Ford
+Modelo: Focus
+Puertas: 5
+
+Tipo: Moto
+Id: 3
+Marca: Yamaha
+Modelo: R6
+Cilindrada: 600
+
+Tipo: Moto
+Id: 4
+Marca: Honda
+Modelo: CBR500
+Cilindrada: 500
+
+Tipo: Camion
+Id: 5
+Marca: Volvo
+Modelo: FH16
+Carga: 20
+
+Tipo: Camion
+Id: 6
+Marca: Scania
+Modelo: R500
+Carga: 25

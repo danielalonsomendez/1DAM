@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import java.awt.HeadlessException;
+
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -22,6 +24,7 @@ import Modelo_EJ5W.Gato;
 import Modelo_EJ5W.Mascota;
 
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class Mascotas extends JFrame {
@@ -144,7 +147,15 @@ public class Mascotas extends JFrame {
 
 	public void mascotas() {
 		modelo.setRowCount(0);
-		mascotas = controlador.todasMascotas();
+		try {
+			mascotas = controlador.todasMascotas();
+		} catch (SQLException sqle) {
+			JOptionPane.showMessageDialog(null,"Error con la base de datos" + sqle.getMessage(), "Error",
+					JOptionPane.ERROR_MESSAGE);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null,"Error génerico" + e.getMessage(), "Error",
+					JOptionPane.ERROR_MESSAGE);
+		}
 		for (int i = 0; i < mascotas.size(); i++) {
 			String[] fila = new String[6];
 			fila[0] = mascotas.get(i).getIdentificador()+"";
@@ -159,11 +170,19 @@ public class Mascotas extends JFrame {
 	}
 
 	public void eliminarMascota() {
-		if (controlador.eliminarMascotaID(mascotaSeleccionada().getIdentificador()) == true) {
-			JOptionPane.showMessageDialog(null, "Mascota eliminada correctamente.", "Mascotas",
-					JOptionPane.INFORMATION_MESSAGE);
-			mascotas();
-			btnBorrarSeleccionado.setVisible(false);
+		try {
+			if (controlador.eliminarMascotaID(mascotaSeleccionada().getIdentificador()) == true) {
+				JOptionPane.showMessageDialog(null, "Mascota eliminada correctamente.", "Mascotas",
+						JOptionPane.INFORMATION_MESSAGE);
+				mascotas();
+				btnBorrarSeleccionado.setVisible(false);
+			}
+		} catch (SQLException sqle) {
+			JOptionPane.showMessageDialog(null,"Error con la base de datos" + sqle.getMessage(), "Error",
+					JOptionPane.ERROR_MESSAGE);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null,"Error génerico" + e.getMessage(), "Error",
+					JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }

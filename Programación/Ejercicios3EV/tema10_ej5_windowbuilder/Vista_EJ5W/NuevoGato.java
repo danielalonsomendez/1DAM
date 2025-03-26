@@ -1,6 +1,8 @@
 package Vista_EJ5W;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Color;
@@ -8,11 +10,14 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import java.awt.HeadlessException;
+
 import javax.swing.JButton;
 import Controlador_EJ5W.Controlador;
 import Modelo_EJ5W.Gato;
 
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
@@ -51,7 +56,6 @@ public class NuevoGato extends JFrame {
 		txtNombre.setColumns(10);
 		txtNombre.setBounds(28, 119, 273, 35);
 		contentPane.add(txtNombre);
-
 
 		JLabel lblNombre = new JLabel("Nombre");
 		lblNombre.setFont(fuentePlain);
@@ -145,7 +149,7 @@ public class NuevoGato extends JFrame {
 		btnGuardar.setBackground(Color.WHITE);
 		btnGuardar.setBounds(28, 553, 144, 38);
 		contentPane.add(btnGuardar);
-		
+
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -163,8 +167,14 @@ public class NuevoGato extends JFrame {
 	}
 
 	public boolean validar() {
+		ArrayList<String> mensajeError = new ArrayList<String>();
 		String Nombre = txtNombre.getText();
-		String Edad = textFieldEdad.getText();
+		int Edad = 0;
+		try {
+			Edad = Integer.parseInt(textFieldEdad.getText());
+		} catch (InputMismatchException e) {
+			mensajeError.add("Edad tiene que ser un número");
+		}
 		String DNI = textFieldDNI.getText();
 		String Color = textFieldColor.getText();
 		String Pelo = null;
@@ -175,11 +185,10 @@ public class NuevoGato extends JFrame {
 		} else if (rdbtnLargo.isSelected()) {
 			Pelo = "L";
 		}
-		ArrayList<String> mensajeError = new ArrayList<String>();
 		if ((Nombre.length() >= 1 || Nombre.length() >= 30) == false) {
 			mensajeError.add("Nombre no puede estar vacio");
 		}
-		if (Edad.length() == 0 || Gato.validarEdad(Integer.parseInt(Edad)) == false) {
+		if (Gato.validarEdad(Edad) == false) {
 			mensajeError.add("Edad no puede estar vacio");
 		}
 		if (DNI.length() == 0 || Gato.validarDNI(DNI) == false) {
@@ -193,14 +202,22 @@ public class NuevoGato extends JFrame {
 		}
 
 		if (mensajeError.size() == 0) {
-			Gato gato = new Gato(0, Nombre, Integer.parseInt(Edad), DNI, Color, Pelo.toCharArray()[0]);
+			Gato gato = new Gato(0, Nombre, Edad, DNI, Color, Pelo.toCharArray()[0]);
 
-			if (controlador.añadirMascota(gato) == true) {
-				dispose();
-				Mascotas ventana = new Mascotas();
-				ventana.setVisible(true);
-				JOptionPane.showMessageDialog(null, "¡Mascota creada correctamente!", "Mascotas",
-						JOptionPane.INFORMATION_MESSAGE);
+			try {
+				if (controlador.añadirMascota(gato) == true) {
+					dispose();
+					Mascotas ventana = new Mascotas();
+					ventana.setVisible(true);
+					JOptionPane.showMessageDialog(null, "¡Mascota creada correctamente!", "Mascotas",
+							JOptionPane.INFORMATION_MESSAGE);
+				}
+			} catch (SQLException sqle) {
+				JOptionPane.showMessageDialog(null, "Error con la base de datos" + sqle.getMessage(), "Error",
+						JOptionPane.ERROR_MESSAGE);
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(null, "Error génerico" + e.getMessage(), "Error",
+						JOptionPane.ERROR_MESSAGE);
 			}
 		} else {
 			JOptionPane.showMessageDialog(null, " - " + String.join("\n - ", mensajeError), "Error al crear mascota",
