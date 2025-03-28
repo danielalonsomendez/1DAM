@@ -265,3 +265,153 @@ end;
 //
 call ModificarSalariosDepar(60,30);
 //
+
+
+
+/* TEMA 12 */
+
+/*
+1. Cree un procedimiento que reciba un número de departamento y muestre su nombre y localidad.
+Si no existe ningún departamento con el número pasado como parámetro, se generará un
+mensaje de error que informe de tal circunstancia.
+*/
+delimiter //
+create procedure Ejer1(deptno int) 
+begin 
+declare nombre varchar(40);
+declare localidad varchar(40);
+declare existe bool default 0;
+declare continue handler for 1329 set existe = 1;
+select dnombre,loc into nombre,localidad from depart where dept_no = deptno;
+if existe=1 then
+select concat("No existe un departemento con número ",deptno)"Mensaje";
+else 
+select nombre,localidad;
+end if;
+end;
+//
+call Ejer1(10);
+//
+
+
+/*
+2. Cree un procedimiento que reciba el número de un departamento y un nombre de departamento.
+El objetivo es asignar al departamento con el número recibido como primer parámetro el nuevo
+nombre recibido como segundo parámetro. El procedimiento deberá encargarse de realizar tal
+modificación, informando de si se ha podido llevar a cabo. Hay dos motivos por los cuales
+puede no ser posible llevarla a cabo: 1) porque no exista ningún departamento con el número
+recibido como parámetro, 2) porque no se le puede asignar el nuevo nombre debido a que ya hay
+otro departamento con ese mismo nombre (téngase en cuenta que el nombre de los
+departamentos es único). Si se produce cualquiera de estas dos situaciones, se deberá mostrar un
+mensaje de error significativo.
+*/
+delimiter //
+create procedure Ejer2(deptno int,nombredep varchar(40)) 
+begin 
+declare numdepart varchar(40);
+declare existeDep bool default 0;
+declare existeDepNombre bool default 0;
+declare continue handler for 1329 set existeDep = 1;
+declare continue handler for 1062 set existeDepNombre = 1;
+select deptno into numdepart from depart where dept_no = deptno;
+
+if existeDep=1 then
+select concat("No existe un departemento con número ",deptno)"Mensaje";
+else 
+update depart set dnombre = nombredep where dept_no = deptno;
+
+if existeDepNombre=1 then
+select concat("No se ha podido cambiar el nombre, porque ya existe un departamento con ese nombre")"Mensaje";
+else 
+select concat("Nombre del departamento n",deptno," cambiado correctamente")"Mensaje";
+end if;
+end if;
+
+end;
+//
+call Ejer2(20,"HOLA");
+
+//
+/*
+3. Cree un procedimiento que reciba el número de un departamento y se encargue de eliminarlo.
+En tal caso, se mostrará un mensaje que informe de la eliminación. No obstante, puede ocurrir
+que no sea posible eliminar el departamento por dos motivos: 1) porque no exista ningún
+departamento con el número pasado como parámetro, 2) porque no sea posible eliminarlo si hay
+algún empleado trabajando en él. En cualquiera de estos dos casos, se deberá mostrar un
+mensaje de error significativo.
+*/
+delimiter //
+create procedure Ejer3(deptno int) 
+begin 
+declare numdepart varchar(40);
+declare existeDep bool default 0;
+declare sepuedeEliminar bool default 0;
+declare continue handler for 1329 set existeDep = 1;
+declare continue handler for 1451 set sepuedeEliminar = 1;
+select deptno into numdepart from depart where dept_no = deptno;
+
+if existeDep=1 then
+select concat("No existe un departemento con número ",deptno)"Mensaje";
+else 
+delete from depart where dept_no = deptno;
+
+if sepuedeEliminar=1 then
+select concat("No se ha podido eliminar el departamento, porque tiene trabajadores asignados ")"Mensaje";
+else 
+select concat("Departamento n",deptno," eliminado correctamente")"Mensaje";
+end if;
+end if;
+
+end;
+//
+call Ejer3(60);
+//
+
+/*
+5. Codifique un procedimiento que reciba como parámetros dos números: un salario mínimo y un
+salario máximo. Se debe mostrar por cada empleado de la tabla Emple que cobre un salario entre
+los dos pasados como parámetro (ambos incluidos), su apellido, salario, comisión, porcentaje
+que supone la comisión con respecto al salario (redondeado a dos decimales) y el nombre del
+departamento en el que trabaja.
+*/
+delimiter //
+create procedure Ejer5(salMin float,salMax float) 
+begin 
+declare apellidoemple varchar(40)  ;
+declare hayAlguno bool default 0;
+declare continue handler for 1329 set hayAlguno = 1;
+select apellido into apellidoemple from emple E where salario between salMin and salMax limit 1;
+
+if hayAlguno=1 then
+select concat("No hay ningun empleado con un salario entre ",salMin," y ",salMax)"Mensaje";
+else
+select apellido,salario,comision,round(comision/salario,2)"Porcentaje",D.dnombre from emple E join depart D on D.dept_no = E.dept_no where salario between salMin and salMax;
+end if;
+
+end;
+//
+call Ejer5(0,3000000);
+//
+
+/*
+6. Cree un procedimiento que muestre para los dos departamentos con más empleados, su nombre,
+número de empleados y salario medio de estos (redondeado a dos decimales).
+*/
+delimiter //
+create procedure Ejer6() 
+begin 
+declare deptno varchar(40)  ;
+declare hayAlguno bool default 0;
+declare continue handler for 1329 set hayAlguno = 1;
+select dept_no into deptno from depart  limit 1;
+
+if hayAlguno=1 then
+select concat("No hay ningún departamento en la base de datos") "Mensaje";
+else
+select D.dnombre,count(emp_no)"Numero Empleados",round(avg(E.salario),2)"Media salario" from depart D join emple E on D.dept_no = E.dept_no group by D.dept_no order by count(emp_no)desc limit 2;
+end if;
+
+end;
+//
+call Ejer6();
+//
