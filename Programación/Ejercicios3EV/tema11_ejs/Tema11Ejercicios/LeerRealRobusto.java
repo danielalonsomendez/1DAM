@@ -11,16 +11,12 @@ public class LeerRealRobusto {
 		boolean contienepunto = false;
         StringBuilder nuevoRealRobusto = new StringBuilder();
 
-        // Recorremos cada carácter de la cadena
         for (int i = 0; i < RealRobusto.length(); i++) {
             char c = RealRobusto.charAt(i);
-
             if (c == '.' && !contienepunto) {
-                // Si encontramos el primer punto, lo añadimos
                 contienepunto = true;
                 nuevoRealRobusto.append(c);
             } else if (c != '.') {
-                // Añadimos todos los caracteres que no son punto
                 nuevoRealRobusto.append(c);
             }
         }
