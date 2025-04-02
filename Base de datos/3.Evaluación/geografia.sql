@@ -1236,21 +1236,17 @@ una localidad con el número XXXX llamada YYYYYYYY”.
 delimiter //
 create procedure Ejer4(idlocalidad int,nombrelocalidad varchar(50),poblacionlocalidad int,nprovincia int ) 
 begin 
-declare numeroprov int;
 declare existeLocalidad bool default 0;
 declare existeProvincia bool default 0;
-declare continue handler for 1329 set existeProvincia = 1;
+declare continue handler for 1452 set existeProvincia = 1;
 declare continue handler for 1062 set existeLocalidad = 1;
-select n_provincia into numeroprov from provincias where n_provincia = nprovincia;
+insert into localidades values(idlocalidad,nombrelocalidad,poblacionlocalidad,nprovincia);
 if existeProvincia=1 then
 select concat("No hay ninguna provincia con el número ",nprovincia)"Mensaje";
-else 
-insert into localidades values(idlocalidad,nombrelocalidad,poblacionlocalidad,nprovincia);
-if existeLocalidad=1 then
+elseif existeLocalidad=1 then
 select concat("Ya hay una localidad con el número ",idlocalidad)"Mensaje";
 else 
 select concat("Se ha añadido una localidad con el número ",idlocalidad," llamada ",nombrelocalidad)"Mensaje";
-end if;
 end if;
 end;
 //
