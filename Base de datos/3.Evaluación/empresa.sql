@@ -415,3 +415,27 @@ end;
 //
 call Ejer6();
 //
+/*
+7. Cree un procedimiento que muestre los siguientes datos de empleados: apellido, oficio, salario y
+comisión. Solamente se deberán mostrar los datos de los empleados con menor salario. Además,
+se deberán mostrar solo los datos de tantos empleados como indique el número recibido como
+parámetro.
+*/
+delimiter //
+create procedure Ejer7(max int) 
+begin 
+declare apellidoE varchar(40)  ;
+declare hayAlguno bool default 0;
+declare continue handler for 1329 set hayAlguno = 1;
+select apellido into apellidoE from emple order by salario  limit 1;
+
+if hayAlguno=1 then
+select concat("No hay ningún empleado en la base de datos") "Mensaje";
+else
+select apellido,oficio,salario,comision from emple order by salario  limit max;
+end if;
+
+end;
+//
+call Ejer7(15);
+//
