@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fichero XML 01</title>
+</head>
+
+<body>
+
+    <input type="file" onchange="leeFich(this)">
+    <br>
+    <table id="mostrarInfo">
+        <tr>
+            <td>Puesto</td>
+            <td>Jugador</td>
+            <td>Edad</td>
+            <td>Info</td>
+        </tr>
+    </table>
+
+    <script>
+        function leeFich(entrada_input) {
+            const mostrarInfo = document.getElementById('mostrarInfo');
+            const fich = entrada_input.files[0];
+            const lector = new FileReader();
+            lector.onload = function (evento) {
+                let contenidoXML = evento.target.result;
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(contenidoXML, "application/xml")
+                const jugadores = xmlDoc.querySelectorAll("jugador");
+
+                for (let i = 0; i < jugadores.length; i++) {
+                    const atributos = jugadores[i].childNodes;
+                    let filas = "";
+                    for (let z = 0; z < atributos.length; z++) {
+                        if (atributos[z].textContent.trim() != "") {
+                            filas += "<td>" + atributos[z].textContent + "</td>"
+                        }
+                    }
+                    mostrarInfo.innerHTML += "<tr>" + filas + "</tr>"
+
+                }
+
+
+
+
+            }
+            lector.readAsText(fich);
+
+        }
+    </script>
+
+</body>
+
+</html>

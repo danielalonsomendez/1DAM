@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fichero XML 01</title>
+    <style>
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        th,
+        td {
+            padding: 20px;
+        }
+
+        th {
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table id="mostrarInfo">
+        <tr>
+            <th>#</th>
+            <th>Club</th>
+            <th>Puntos</th>
+            <th>PJ</th>
+            <th>PG</th>
+            <th>PE</th>
+            <th>PP</th>
+            <th>GF</th>
+            <th>GC</th>
+            <th>Dif</th>
+        </tr>
+    </table>
+
+    <script>
+        function leeFich(entrada_input) {
+            const mostrarInfo = document.getElementById('mostrarInfo');
+
+            let contenidoXML = entrada_input;
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(contenidoXML, "application/xml")
+            const equipos = xmlDoc.querySelectorAll("Equipo");
+            const listaEquipos = [];
+            for (let i = 0; i < equipos.length; i++) {
+                const equipo = equipos[i];
+                let Club = equipo.querySelector("Club").textContent;
+                let PG = parseInt(equipo.querySelector("Partidos_ganados").textContent);
+                let PE = parseInt(equipo.querySelector("Partidos_empatados").textContent);
+                let PP = parseInt(equipo.querySelector("Partidos_perdidos").textContent);
+                let GF = parseInt(equipo.querySelector("Goles_a_favor").textContent);
+                let GC = parseInt(equipo.querySelector("Goles_en_contra").textContent);
+
+                let PJ = PG + PE + PP;
+                let Dif = GF - GC;
+                let Puntos = (PG * 3) + PE;
+
+                listaEquipos.push([Club, Puntos, PJ, PG, PE, PP, GF, GC, Dif])
+
+            }
+
+
+            listaEquipos.sort(function (a, b) {
+                if(b[1]== a[1]){
+                    return b[8]-a[8]
+                }
+                return b[1] - a[1];
+            });
+
+
+            for (let i = 0; i < listaEquipos.length; i++) {
+                let filas = "";
+                let atributos=[(i+1),...listaEquipos[i]]
+                for (let z = 0; z < atributos.length; z++) {
+                    filas += "<td>" + atributos[z] + "</td>"
+                }
+                mostrarInfo.innerHTML += "<tr>" + filas + "</tr>"
+            }
+
+        }
+
+        fetch("./20250203LaLiga.xml").then((response) => response.text())
+            .then((contenido) => {
+                leeFich(contenido)
+            })
+    </script>
+
+</body>
+
+</html>

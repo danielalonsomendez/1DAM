@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Gestor {
 
-	public ArrayList<Vehiculo> leerArchivo() {
+	public ArrayList<Vehiculo> leerArchivo() throws IOException {
 		ArrayList<Vehiculo> vehiculos = new ArrayList<Vehiculo>();
 		File archivo = new File("vehiculos.txt");
 		try {
@@ -45,7 +45,7 @@ public class Gestor {
 			}
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new IOException(e);
 		}
 		return vehiculos;
 	}

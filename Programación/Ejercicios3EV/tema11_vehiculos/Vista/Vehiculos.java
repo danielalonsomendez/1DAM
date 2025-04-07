@@ -1,5 +1,6 @@
 package Vista;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import Controlador_Vehiculos.Controlador;
@@ -9,7 +10,12 @@ public class Vehiculos {
 
 	public static void main(String[] args) {
 		Controlador controlador = new Controlador();
-		ArrayList<Vehiculo> vehiculos = controlador.leerArchivo();
+		ArrayList<Vehiculo> vehiculos = null;
+		try {
+			vehiculos = controlador.leerArchivo();
+		} catch (IOException e) {
+		System.out.println("No ha sido posible leer el archivo");
+		}
 		mostrar(vehiculos);
 	}
 

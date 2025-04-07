@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fichero XML 01</title>
+</head>
+
+<body>
+
+    <table id="mostrarInfo">
+        <tr>
+            <td>Puesto</td>
+            <td>Jugador</td>
+            <td>Edad</td>
+            <td>Info</td>
+        </tr>
+    </table>
+
+    <script>
+        function leeFich(entrada_input) {
+            const mostrarInfo = document.getElementById('mostrarInfo');
+
+            let contenidoXML = entrada_input;
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(contenidoXML, "application/xml")
+            const jugadores = xmlDoc.querySelectorAll("jugador");
+
+            for (let i = 0; i < jugadores.length; i++) {
+                const atributos = jugadores[i].childNodes;
+                let filas = "";
+                for (let z = 0; z < atributos.length; z++) {
+                    if (atributos[z].textContent.trim() != "") {
+                        filas += "<td>" + atributos[z].textContent + "</td>"
+                    }
+                }
+                mostrarInfo.innerHTML += "<tr>" + filas + "</tr>"
+
+            }
+
+
+
+
+        }
+        fetch("./atp.xml").then((response) => response.text())
+            .then((contenido) => {
+                leeFich(contenido)
+            })
+    </script>
+
+</body>
+
+</html>

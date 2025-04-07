@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='utf-8'?>
+<data>
+    <Equipo>
+        <Club>Athletic Club</Club>
+        <Partidos_ganados>13</Partidos_ganados>
+        <Partidos_empatados>9</Partidos_empatados>
+        <Partidos_perdidos>4</Partidos_perdidos>
+        <Goles_a_favor>44</Goles_a_favor>
+        <Goles_en_contra>23</Goles_en_contra>
+    </Equipo>
+    <Equipo>
+        <Club>Atlético de Madrid</Club>
+        <Partidos_ganados>16</Partidos_ganados>
+        <Partidos_empatados>8</Partidos_empatados>
+        <Partidos_perdidos>2</Partidos_perdidos>
+        <Goles_a_favor>43</Goles_a_favor>
+        <Goles_en_contra>16</Goles_en_contra>
+    </Equipo>
+    <Equipo>
+        <Club>CA Osasuna</Club>
+        <Partidos_ganados>7</Partidos_ganados>
+        <Partidos_empatados>12</Partidos_empatados>
+        <Partidos_perdidos>7</Partidos_perdidos>
+        <Goles_a_favor>32</Goles_a_favor>
+        <Goles_en_contra>37</Goles_en_contra>
+    </Equipo>
+    <Equipo>
+        <Club>CD Leganés</Club>
+        <Partidos_ganados>6</Partidos_ganados>
+        <Partidos_empatados>9</Partidos_empatados>
+        <Partidos_perdidos>11</Partidos_perdidos>
+        <Goles_a_favor>23</Goles_a_favor>
+        <Goles_en_contra>38</Goles_en_contra>
+    </Equipo>
+    <Equipo>
+        <Club>Deportivo Alavés</Club>
+        <Partidos_ganados>5</Partidos_ganados>
+        <Partidos_empatados>8</Partidos_empatados>
+        <Partidos_perdidos>13</Partidos_perdidos>
+        <Goles_a_favor>29</Goles_a_favor>
+        <Goles_en_contra>40</Goles_en_contra>
+    </Equipo>
+    <Equipo>
+        <Club>FC Barcelona</Club>
+        <Partidos_ganados>18</Partidos_ganados>
+        <Partidos_empatados>3</Partidos_empatados>
+        <Partidos_perdidos>5</Partidos_perdidos>
+        <Goles_a_favor>71</Goles_a_favor>
+        <Goles_en_contra>25</Goles_en_contra>
+    </Equipo>
+    <Equipo>
+        <Club>Getafe CF</Club>
+        <Partidos_ganados>7</Partidos_ganados>
+        <Partidos_empatados>9</Partidos_empatados>
+        <Partidos_perdidos>10</Partidos_perdidos>
+        <Goles_a_favor>21</Goles_a_favor>
+        <Goles_en_contra>21</Goles_en_contra>
+    </Equipo>
+    <Equipo>
+        <Club>Girona FC</Club>
+        <Partidos_ganados>9</Partidos_ganados>
+        <Partidos_empatados>5</Partidos_empatados>
+        <Partidos_perdidos>12</Partidos_perdidos>
+        <Goles_a_favor>34</Goles_a_favor>
+        <Goles_en_contra>39</Goles_en_contra>
+    </Equipo>
+    <Equipo>
+        <Club>Rayo Vallecano</Club>
+        <Partidos_ganados>9</Partidos_ganados>
+        <Partidos_empatados>9</Partidos_empatados>
+        <Partidos_perdidos>8</Partidos_perdidos>
+        <Goles_a_favor>28</Goles_a_favor>
+        <Goles_en_contra>27</Goles_en_contra>
+    </Equipo>
+    <Equipo>
+        <Club>RC Celta</Club>
+        <Partidos_ganados>9</Partidos_ganados>
+        <Partidos_empatados>6</Partidos_empatados>
+        <Partidos_perdidos>11</Partidos_perdidos>
+        <Goles_a_favor>38</Goles_a_favor>
+        <Goles_en_contra>40</Goles_en_contra>
+    </Equipo>
+    <Equipo>
+        <Club>RCD Espanyol</Club>
+        <Partidos_ganados>7</Partidos_ganados>
+        <Partidos_empatados>6</Partidos_empatados>
+        <Partidos_perdidos>12</Partidos_perdidos>
+        <Goles_a_favor>24</Goles_a_favor>
+        <Goles_en_contra>36</Goles_en_contra>
+    </Equipo>
+    <Equipo>
+        <Club>RCD Mallorca</Club>
+        <Partidos_ganados>10</Partidos_ganados>
+        <Partidos_empatados>6</Partidos_empatados>
+        <Partidos_perdidos>10</Partidos_perdidos>
+        <Goles_a_favor>25</Goles_a_favor>
+        <Goles_en_contra>32</Goles_en_contra>
+    </Equipo>
+    <Equipo>
+        <Club>Real Betis</Club>
+        <Partidos_ganados>10</Partidos_ganados>
+        <Partidos_empatados>8</Partidos_empatados>
+        <Partidos_perdidos>8</Partidos_perdidos>
+        <Goles_a_favor>34</Goles_a_favor>
+        <Goles_en_contra>33</Goles_en_contra>
+    </Equipo>
+    <Equipo>
+        <Club>Real Madrid</Club>
+        <Partidos_ganados>16</Partidos_ganados>
+        <Partidos_empatados>6</Partidos_empatados>
+        <Partidos_perdidos>4</Partidos_perdidos>
+        <Goles_a_favor>55</Goles_a_favor>
+        <Goles_en_contra>25</Goles_en_contra>
+    </Equipo>
+    <Equipo>
+        <Club>Real Sociedad</Club>
+        <Partidos_ganados>10</Partidos_ganados>
+        <Partidos_empatados>4</Partidos_empatados>
+        <Partidos_perdidos>12</Partidos_perdidos>
+        <Goles_a_favor>23</Goles_a_favor>
+        <Goles_en_contra>27</Goles_en_contra>
+    </Equipo>
+    <Equipo>
+        <Club>Real Valladolid CF</Club>
+        <Partidos_ganados>4</Partidos_ganados>
+        <Partidos_empatados>4</Partidos_empatados>
+        <Partidos_perdidos>18</Partidos_perdidos>
+        <Goles_a_favor>17</Goles_a_favor>
+        <Goles_en_contra>60</Goles_en_contra>
+    </Equipo>
+    <Equipo>
+        <Club>Sevilla FC</Club>
+        <Partidos_ganados>8</Partidos_ganados>
+        <Partidos_empatados>9</Partidos_empatados>
+        <Partidos_perdidos>9</Partidos_perdidos>
+        <Goles_a_favor>31</Goles_a_favor>
+        <Goles_en_contra>36</Goles_en_contra>
+    </Equipo>
+    <Equipo>
+        <Club>UD Las Palmas</Club>
+        <Partidos_ganados>6</Partidos_ganados>
+        <Partidos_empatados>6</Partidos_empatados>
+        <Partidos_perdidos>14</Partidos_perdidos>
+        <Goles_a_favor>30</Goles_a_favor>
+        <Goles_en_contra>44</Goles_en_contra>
+    </Equipo>
+    <Equipo>
+        <Club>Valencia CF</Club>
+        <Partidos_ganados>5</Partidos_ganados>
+        <Partidos_empatados>9</Partidos_empatados>
+        <Partidos_perdidos>12</Partidos_perdidos>
+        <Goles_a_favor>28</Goles_a_favor>
+        <Goles_en_contra>44</Goles_en_contra>
+    </Equipo>
+    <Equipo>
+        <Club>Villarreal CF</Club>
+        <Partidos_ganados>12</Partidos_ganados>
+        <Partidos_empatados>8</Partidos_empatados>
+        <Partidos_perdidos>5</Partidos_perdidos>
+        <Goles_a_favor>48</Goles_a_favor>
+        <Goles_en_contra>35</Goles_en_contra>
+    </Equipo>
+</data>

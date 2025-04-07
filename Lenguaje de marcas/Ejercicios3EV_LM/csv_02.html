@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fichero 01</title>
+    <title>Fichero CSV 02</title>
 </head>
 
 <body>
 
     <input type="file" onchange="leeFich(this)">
     <br>
-    <div id="mostrarInfo"></div>
+    <table id="mostrarInfo"></table>
 
     <script>
         function leeFich(entrada_input) {
@@ -24,13 +24,16 @@
             // Cuando se cargue el fichero...
             lector.onload = function (evento) {
                 if (fich.type == "text/csv") {
-                    // El contenido del archivo como texto
-                    const contenidoFichero = evento.target.result;
-                    let lineas = contenidoFichero.split("\n");
+                    let lineas = evento.target.result.split("\n");
                     for (let linea in lineas) {
-                        let datos = lineas[linea].split(",");
-                        for (let dato in datos) {
-                            mostrarInfo.innerHTML += datos[dato]+"<br>"
+                        if (datos[dato] != "") {
+
+                            let datos = lineas[linea].split(",");
+                            let filas = "";
+                            for (let dato in datos) {
+                                filas += "<td>" + datos[dato] + "</td>"
+                            }
+                            mostrarInfo.innerHTML += "<tr>" + filas + "</tr>"
                         }
                     }
 

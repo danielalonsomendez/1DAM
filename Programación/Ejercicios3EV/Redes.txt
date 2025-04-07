@@ -1,0 +1,23 @@
+Mensaje nº1
+Texto: Primer mensaje de texto  
+Usuario: anita23  
+Instante: 1742505642633
+Likes: 10
+No hay comentarios
+--------------------------------
+Foto nº2
+Fichero: sol.jpg  
+Título: amanecer  
+Usuario: Jorge34  
+Instante: 1742505690553
+Likes: 5
+Comentario: Primer comentario para la foto nº2  
+Comentario: Segundo comentario para la foto nº2  
+--------------------------------
+Mensaje nº3
+Texto: Otro texto de prueba  
+Usuario: Jorge34  
+Instante: 1742505791820
+Likes: 0
+Comentario: Comentario de prueba para mensaje nº3  
+--------------------------------

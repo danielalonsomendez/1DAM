@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jugadores>
+    <jugador>
+        <puesto>1</puesto>
+        <nombre>Jannik Sinner</nombre>
+        <edad>23</edad>
+        <info>https://es.wikipedia.org/wiki/Jannik_Sinner</info>
+    </jugador>
+    <jugador>
+        <puesto>2</puesto>
+        <nombre>Alexander Zverev</nombre>
+        <edad>27</edad>
+        <info>https://es.wikipedia.org/wiki/Alexander_Zverev</info>
+    </jugador>
+    <jugador>
+        <puesto>3</puesto>
+        <nombre>Carlos Alcaraz</nombre>
+        <edad>21</edad>
+        <info>https://es.wikipedia.org/wiki/Carlos_Alcaraz</info>
+    </jugador>
+    <jugador>
+        <puesto>4</puesto>
+        <nombre>Taylor Fritz</nombre>
+        <edad>27</edad>
+        <info>https://es.wikipedia.org/wiki/Taylor_Fritz</info>
+    </jugador>
+    <jugador>
+        <puesto>5</puesto>
+        <nombre>Casper Ruud</nombre>
+        <edad>26</edad>
+        <info>https://es.wikipedia.org/wiki/Casper_Ruud</info>
+    </jugador>
+</jugadores>
