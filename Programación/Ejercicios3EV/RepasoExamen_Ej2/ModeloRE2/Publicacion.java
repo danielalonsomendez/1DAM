@@ -1,7 +1,9 @@
-package Modelo;
+package ModeloRE2;
 
 
 import java.util.ArrayList;
+
+import ModeloRE2.Publicacion;
 
 public class Publicacion {
 	protected int id;
@@ -10,6 +12,15 @@ public class Publicacion {
 	protected int likes;
 	protected ArrayList<String> comentarios;
 	protected static int cont=1;
+	
+	public Publicacion(int id,String id_Usuario, long instante_tiempo, int likes, ArrayList<String> comentarios) {
+		super();
+		this.id = id;
+		this.id_Usuario =  id_Usuario;
+		this.instante_tiempo = instante_tiempo;
+		this.likes = likes;
+		this.comentarios = comentarios;
+	}
 
 	public Publicacion(String id_Usuario, long instante_tiempo, int likes, ArrayList<String> comentarios) {
 		super();

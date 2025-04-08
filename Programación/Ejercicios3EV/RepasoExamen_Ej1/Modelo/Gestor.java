@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 
 public class Gestor {
-	public ArrayList<Publicacion> leerArchivo() throws IOException {
+	public ArrayList<Publicacion> leerArchivo() throws NumberFormatException,IOException {
 		ArrayList<Publicacion> publicaciones = new ArrayList<Publicacion>();
 		File archivo = new File("Redes.txt");
 		try {
@@ -19,9 +19,10 @@ public class Gestor {
 				BufferedReader br = new BufferedReader(fr);
 				String linea;
 				while ((linea = br.readLine()) != null) {
+					
 					if (linea.trim().equals("--------------------------------") == true)
 						linea = br.readLine();
-					if (linea != null) {
+					
 						String Id = "", Texto = "", Fichero = "", Titulo = "", Tipo = "";
 						if (linea.split("Mensaje nº").length == 2) {
 							Tipo = "Mensaje";
@@ -52,15 +53,18 @@ public class Gestor {
 							} while (linea.split("Comentario: ").length == 2);
 						}
 						if (Tipo.equals("Mensaje")) {
+						
 							publicaciones.add(new Mensaje(Usuario, instante, likes, comentarios, Texto));
 						} else if (Tipo.equals("Foto")) {
 							publicaciones.add(new Foto(Usuario, instante, likes, comentarios, Fichero, Titulo));
 						}
 					}
-
-				}
+br.close();
+				
 			}
 
+		}catch (NumberFormatException e) {
+			throw new NumberFormatException();
 		} catch (IOException e) {
 			throw new IOException(e);
 		}
@@ -72,7 +76,7 @@ public class Gestor {
 			FileWriter fichero = new FileWriter("Redes.txt");
 			PrintWriter pw = new PrintWriter(fichero);
 			for (Publicacion publicacion : fuentenoticia.getPublicaciones()) {
-				pw.print(publicacion.toStringArchivo()+ "\n--------------------------------\n");
+			pw.print(publicacion.toStringArchivo()+ "\n--------------------------------\n");
 			}
 			fichero.close();
 		} catch (IOException e) {

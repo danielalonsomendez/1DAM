@@ -16,10 +16,8 @@ public class Gestor {
 				FileReader fr = new FileReader(archivo);
 				BufferedReader br = new BufferedReader(fr);
 				String linea;
-				int i = 0;
 				while ((linea = br.readLine()) != null) {
-					if (linea.equals("") || i == 0) {
-						if (i != 0)
+						if (linea.equals("")  == true)
 							linea = br.readLine();
 						String Tipo = linea.split("Tipo: ")[1];
 						linea = br.readLine();
@@ -39,8 +37,7 @@ public class Gestor {
 							int Carga = Integer.parseInt(linea.split("Carga: ")[1]);
 							vehiculos.add(new Camion(Id, Marca, Modelo, Carga));
 						}
-						i++;
-					}
+					
 				}
 			}
 

@@ -1,11 +1,16 @@
-package Modelo;
+package ModeloRE2;
 
 import java.util.ArrayList;
 
+import ModeloRE2.Publicacion;
 
 public class Mensaje extends Publicacion {
 	private String contenido;
-
+	
+	public Mensaje(int id,String id_Usuario, long instante_tiempo, int likes, ArrayList<String> comentarios, String contenido) {
+		super(id,id_Usuario, instante_tiempo, likes, comentarios);
+		this.contenido = contenido;
+	}
 	public Mensaje(String id_Usuario, long instante_tiempo, int likes, ArrayList<String> comentarios, String contenido) {
 		super(id_Usuario, instante_tiempo, likes, comentarios);
 		this.contenido = contenido;

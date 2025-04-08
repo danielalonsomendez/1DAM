@@ -1,18 +1,19 @@
-package Controlador;
+package ControladorEJ2;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
-import Modelo.FuenteNoticias;
-import Modelo.Gestor;
-import Modelo.Publicacion;
+import ModeloRE2.FuenteNoticias;
+import ModeloRE2.Gestor;
+import ModeloRE2.Publicacion;
 
 
 public class Controlador {
-	public ArrayList<Publicacion> leerArchivo() throws NumberFormatException,IOException {
+	public ArrayList<Publicacion> selectPublicaciones() throws SQLException, Exception {
 		ArrayList<Publicacion> publicaciones = null;
 		Gestor gestor = new Gestor();
-		publicaciones = gestor.leerArchivo();
+		publicaciones = gestor.selectPublicaciones();
 		return publicaciones;
 	}
 

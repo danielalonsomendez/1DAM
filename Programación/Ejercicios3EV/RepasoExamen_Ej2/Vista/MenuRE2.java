@@ -1,30 +1,34 @@
 package Vista;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import Controlador.Controlador;
-import Modelo.Foto;
-import Modelo.FuenteNoticias;
-import Modelo.Mensaje;
-import Modelo.Publicacion;
+import ControladorEJ2.Controlador;
+import ModeloRE2.Foto;
+import ModeloRE2.FuenteNoticias;
+import ModeloRE2.Mensaje;
+import ModeloRE2.Publicacion;
 
-public class MenuRE1 {
+public class MenuRE2 {
 	Scanner teclado = new Scanner(System.in);
 	Controlador controlador = new Controlador();
 	FuenteNoticias fuentenoticias = new FuenteNoticias();
 
 	public void verMenu() {
 		int opcion = 0;
-		try {
-			fuentenoticias.setPublicaciones(controlador.leerArchivo());
-		} catch (NumberFormatException e) {
-			System.out.println("No ha sido posible leer el archivo.");
-		}catch (IOException e) {
-			System.out.println("No ha sido posible leer el archivo.");
-		}
+		
+		
+		
 		do {
+			try {
+				fuentenoticias.setPublicaciones(controlador.selectPublicaciones());
+			} catch (SQLException e) {
+				System.out.println("No se ha podido cargar los datos de la BD");
+			} catch (Exception e) {
+				System.out.println("No se ha podido cargar los datos de la BD");
+			}
 			opcion = elegirOpcion(teclado);
 			teclado.nextLine();
 			switch (opcion) {
