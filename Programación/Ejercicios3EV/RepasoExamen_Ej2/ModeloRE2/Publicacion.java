@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import ModeloRE2.Publicacion;
 
-public class Publicacion {
+public abstract class Publicacion {
 	protected int id;
 	protected String id_Usuario;
 	protected long instante_tiempo;

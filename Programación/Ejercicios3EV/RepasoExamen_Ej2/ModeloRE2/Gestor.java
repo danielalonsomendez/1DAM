@@ -13,117 +13,76 @@ import java.util.ArrayList;
 
 public class Gestor {
 	public ResultSet select(String sql) throws SQLException, Exception {
-		try {
-			Class.forName(DBUtils.DRIVER);
-			Connection conexion = DriverManager.getConnection(DBUtils.URL, DBUtils.USER, DBUtils.PASSWORD);
-			PreparedStatement sentencia = conexion.prepareStatement(sql);
-			ResultSet resultSet = sentencia.executeQuery();
-			return resultSet;
-		} catch (SQLException sqle) {
-			throw new SQLException(sqle);
-		} catch (Exception e) {
-			throw new Exception(e);
-		}
-
+		Class.forName(DBUtils.DRIVER);
+		Connection conexion = DriverManager.getConnection(DBUtils.URL, DBUtils.USER, DBUtils.PASSWORD);
+		PreparedStatement sentencia = conexion.prepareStatement(sql);
+		ResultSet resultSet = sentencia.executeQuery();
+		return resultSet;
 	}
 
-	public boolean insertar(String sql) throws SQLException, Exception {
-		boolean valido = false;
-		Connection conexion = null;
-		Statement sentencia = null;
+	public void insertar(String sql) throws SQLException, Exception {
+		Class.forName(DBUtils.DRIVER);
+		Connection conexion = DriverManager.getConnection(DBUtils.URL, DBUtils.USER, DBUtils.PASSWORD);
+		Statement sentencia = conexion.createStatement();
 
-		try {
-			Class.forName(DBUtils.DRIVER);
-			conexion = DriverManager.getConnection(DBUtils.URL, DBUtils.USER, DBUtils.PASSWORD);
-			sentencia = conexion.createStatement();
-			sentencia.executeUpdate(sql);
-			valido = true;
-		} catch (SQLException sqle) {
-			throw new SQLException(sqle);
-		} catch (Exception e) {
-			throw new Exception(e);
-		}
-
-		try {
-			sentencia.close();
-			conexion.close();
-		} catch (SQLException sqle) {
-			throw new SQLException(sqle);
-		}
-		return valido;
+		sentencia.executeUpdate(sql);
+		sentencia.close();
+		conexion.close();
 	}
 
-	public boolean update(String sql) throws SQLException, Exception {
-		try {
-			Class.forName(DBUtils.DRIVER);
-			Connection conexion = DriverManager.getConnection(DBUtils.URL, DBUtils.USER, DBUtils.PASSWORD);
-			PreparedStatement sentencia = conexion.prepareStatement(sql);
+	public void update(String sql) throws SQLException, Exception {
+		Class.forName(DBUtils.DRIVER);
+		Connection conexion = DriverManager.getConnection(DBUtils.URL, DBUtils.USER, DBUtils.PASSWORD);
+		PreparedStatement sentencia = conexion.prepareStatement(sql);
 
-			sentencia.executeUpdate();
-
-			sentencia.close();
-			conexion.close();
-			return true;
-		} catch (SQLException sqle) {
-			throw new SQLException(sqle);
-		} catch (Exception e) {
-			throw new Exception(e);
-		}
+		sentencia.executeUpdate();
+		sentencia.close();
+		conexion.close();
 
 	}
 
 	public ArrayList<Publicacion> selectPublicaciones() throws SQLException, Exception {
 		ArrayList<Publicacion> publicaciones = new ArrayList<Publicacion>();
 
-		try {
-			ResultSet rs = select(SQLQueries.SELECT_PUBLICACIONES);
-			while (rs.next()) {
-				if (rs.getString("texto") != null) {
-					publicaciones.add(new Mensaje(rs.getInt("id"), rs.getString("usuario"), rs.getLong("instante"),
-							rs.getInt("likes"), new ArrayList<String>(), rs.getString("texto")));
-				} else {
-					publicaciones.add(new Foto(rs.getInt("id"), rs.getString("usuario"), rs.getLong("instante"),
-							rs.getInt("likes"), new ArrayList<String>(), rs.getString("fichero"),
-							rs.getString("titulo")));
-				}
+		ResultSet rs = select(SQLQueries.SELECT_PUBLICACIONES);
+		while (rs.next()) {
+			if (rs.getString("texto") != null) {
+				publicaciones.add(new Mensaje(rs.getInt("id"), rs.getString("usuario"), rs.getLong("instante"),
+						rs.getInt("likes"), new ArrayList<String>(), rs.getString("texto")));
+			} else {
+				publicaciones.add(new Foto(rs.getInt("id"), rs.getString("usuario"), rs.getLong("instante"),
+						rs.getInt("likes"), new ArrayList<String>(), rs.getString("fichero"), rs.getString("titulo")));
 			}
-			rs.close();
-			ResultSet rs2 = select(SQLQueries.SELECT_COMENTARIOS);
-			String[][] comentarios = new String[900][2];
-			int i = 0;
-			while (rs2.next()) {
-				comentarios[i][0] = rs2.getString("publicacion_id");
-				comentarios[i][1] = rs2.getString("texto");
-				i++;
-			}
-			for (int y = 0; y < publicaciones.size(); y++) {
-				for (int z = 0; z < i; z++) {
-					if (Integer.parseInt(comentarios[z][0]) == publicaciones.get(y).getId()) {
-						publicaciones.get(y).AñadirComentario(comentarios[z][1]);
-					}
-				}
-			}
-			rs2.close();
-		} catch (SQLException sqle) {
-			throw new SQLException(sqle);
-		} catch (Exception e) {
-			throw new Exception(e);
 		}
+		rs.close();
+		ResultSet rs2 = select(SQLQueries.SELECT_COMENTARIOS);
+		String[][] comentarios = new String[900][2];
+		int i = 0;
+		while (rs2.next()) {
+			comentarios[i][0] = rs2.getString("publicacion_id");
+			comentarios[i][1] = rs2.getString("texto");
+			i++;
+		}
+		for (int y = 0; y < publicaciones.size(); y++) {
+			for (int z = 0; z < i; z++) {
+				if (Integer.parseInt(comentarios[z][0]) == publicaciones.get(y).getId()) {
+					publicaciones.get(y).AñadirComentario(comentarios[z][1]);
+				}
+			}
+		}
+		rs2.close();
 
 		return publicaciones;
 	}
 
 	public void actualizarArchivo(FuenteNoticias fuentenoticia) throws IOException {
-		try {
-			FileWriter fichero = new FileWriter("Redes.txt");
-			PrintWriter pw = new PrintWriter(fichero);
-			for (Publicacion publicacion : fuentenoticia.getPublicaciones()) {
-				pw.print(publicacion.toStringArchivo() + "\n--------------------------------\n");
-			}
-			fichero.close();
-		} catch (IOException e) {
-			throw new IOException(e);
+		FileWriter fichero = new FileWriter("Redes.txt");
+		PrintWriter pw = new PrintWriter(fichero);
+		for (Publicacion publicacion : fuentenoticia.getPublicaciones()) {
+			pw.print(publicacion.toStringArchivo() + "\n--------------------------------\n");
 		}
+		fichero.close();
+
 	}
 
 	public void like(boolean like, Publicacion publicacion) throws SQLException, Exception {
