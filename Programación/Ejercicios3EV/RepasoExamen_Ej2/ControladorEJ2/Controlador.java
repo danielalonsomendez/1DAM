@@ -20,6 +20,19 @@ public class Controlador {
 	public void actualizarArchivo(FuenteNoticias fuentenoticias) throws IOException  {
 		Gestor gestor = new Gestor();
 		gestor.actualizarArchivo(fuentenoticias);
+	}
+	public void añadirPublicacion(Publicacion publicacion) throws SQLException, Exception{
+		Gestor gestor = new Gestor();
+		 gestor.añadirPublicacion(publicacion) ;
 		
+	}
+	public void añadirComentario(String texto,Publicacion publicacion) throws SQLException, Exception{
+		Gestor gestor = new Gestor();
+		 gestor.añadirComentario(texto, publicacion) ;
+		
+	}
+	public void like(boolean like,Publicacion publicacion) throws SQLException, Exception{
+		Gestor gestor = new Gestor();
+		 gestor.like(like,publicacion) ;
 	}
 }

@@ -18,26 +18,24 @@ public class MenuRE2 {
 
 	public void verMenu() {
 		int opcion = 0;
-		
-		
-		
+
 		do {
 			try {
 				fuentenoticias.setPublicaciones(controlador.selectPublicaciones());
 			} catch (SQLException e) {
-				System.out.println("No se ha podido cargar los datos de la BD");
+				System.out.println("No se ha podido cargar los datos de la BD"+e);
 			} catch (Exception e) {
-				System.out.println("No se ha podido cargar los datos de la BD");
+				System.out.println("No se ha podido cargar los datos de la BD"+e);
 			}
 			opcion = elegirOpcion(teclado);
 			teclado.nextLine();
 			switch (opcion) {
 			case 1:
-				fuentenoticias.añadirMensaje(pedirMensajeTexto());
+				añadir(pedirMensajeTexto());
 				System.out.println("Se ha añadido el mensaje correctamente.");
 				break;
 			case 2:
-				fuentenoticias.añadirMensaje(pedirFoto());
+				añadir(pedirFoto());
 				System.out.println("Se ha añadido la foto correctamente.");
 				break;
 			case 3:
@@ -50,10 +48,10 @@ public class MenuRE2 {
 				comentarMensaje();
 				break;
 			case 6:
-				likeMensaje();
+				like(true);
 				break;
 			case 7:
-				unlikeMensaje();
+				like(false);
 				break;
 			case 8:
 				try {
@@ -62,8 +60,7 @@ public class MenuRE2 {
 					System.out.println("No se ha podido actualizar el archivo.");
 				}
 			}
-			
-				
+
 		} while (opcion != 8);
 		teclado.close();
 	}
@@ -101,6 +98,16 @@ public class MenuRE2 {
 		return opcion;
 	}
 
+	public void añadir(Publicacion publicacion) {
+		try {
+			controlador.añadirPublicacion(publicacion);
+		} catch (SQLException e) {
+			System.out.println("No se ha podido añadir la publicación");
+		} catch (Exception e) {
+			System.out.println("No se ha podido añadir la publicación");
+		}
+	}
+
 	public void mostrarMensajes() {
 		for (Publicacion publicacion : fuentenoticias.getPublicaciones()) {
 			System.out.println(publicacion + "\n--------------------------------");
@@ -116,18 +123,26 @@ public class MenuRE2 {
 		}
 	}
 
-	public void likeMensaje() {
-		seleccionarPublicacion().incrementarLike();
-	}
-
-	public void unlikeMensaje() {
-		seleccionarPublicacion().unLike();
+	public void like(boolean like) {
+		try {
+			controlador.like(like, seleccionarPublicacion());
+		} catch (SQLException e) {
+			System.out.println("No se ha podido hacer/deshacer el like");
+		} catch (Exception e) {
+			System.out.println("No se ha podido hacer/deshacer el like");
+		}
 	}
 
 	public void comentarMensaje() {
 		teclado.nextLine();
 		System.out.print("Introduce el comentario: ");
-		seleccionarPublicacion().AñadirComentario(teclado.nextLine());
+		try {
+			controlador.añadirComentario(teclado.nextLine(), seleccionarPublicacion());
+		} catch (SQLException e) {
+			System.out.println("No se ha podido añadir el comentario a la base de datos... " + e);
+		} catch (Exception e) {
+			System.out.println("No se ha podido añadir el comentario a la base de datos... ");
+		}
 	}
 
 	public Publicacion seleccionarPublicacion() {
