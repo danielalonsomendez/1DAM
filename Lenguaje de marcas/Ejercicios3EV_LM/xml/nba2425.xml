@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<teams>
+    <team>
+        <name>Atlanta Hawks</name>
+        <logo>atlanta_hawks.svg</logo>
+        <code>1610612737</code>
+    </team>
+    <team>
+        <name>Boston Celtics</name>
+        <logo>boston_celtics.svg</logo>
+        <code>1610612738</code>
+    </team>
+    <team>
+        <name>Brooklyn Nets</name>
+        <logo>brooklyn_nets.svg</logo>
+        <code>1610612751</code>
+    </team>
+    <team>
+        <name>Charlotte Hornets</name>
+        <logo>charlotte_hornets.svg</logo>
+        <code>1610612766</code>
+    </team>
+    <team>
+        <name>Chicago Bulls</name>
+        <logo>chicago_bulls.svg</logo>
+        <code>1610612741</code>
+    </team>
+    <team>
+        <name>Cleveland Cavaliers</name>
+        <logo>cleveland_cavaliers.svg</logo>
+        <code>1610612739</code>
+    </team>
+    <team>
+        <name>Dallas Mavericks</name>
+        <logo>dallas_mavericks.svg</logo>
+        <code>1610612742</code>
+    </team>
+    <team>
+        <name>Denver Nuggets</name>
+        <logo>denver_nuggets.svg</logo>
+        <code>1610612743</code>
+    </team>
+    <team>
+        <name>Detroit Pistons</name>
+        <logo>detroit_pistons.svg</logo>
+        <code>1610612765</code>
+    </team>
+    <team>
+        <name>Golden State Warriors</name>
+        <logo>golden_state_warriors.svg</logo>
+        <code>1610612744</code>
+    </team>
+    <team>
+        <name>Houston Rockets</name>
+        <logo>houston_rockets.svg</logo>
+        <code>1610612745</code>
+    </team>
+    <team>
+        <name>Indiana Pacers</name>
+        <logo>indiana_pacers.svg</logo>
+        <code>1610612754</code>
+    </team>
+    <team>
+        <name>LA Clippers</name>
+        <logo>la_clippers.svg</logo>
+        <code>1610612746</code>
+    </team>
+    <team>
+        <name>Los Angeles Lakers</name>
+        <logo>los_angeles_lakers.svg</logo>
+        <code>1610612747</code>
+    </team>
+    <team>
+        <name>Memphis Grizzlies</name>
+        <logo>menphis_grizzlies.svg</logo>
+        <code>1610612763</code>
+    </team>
+    <team>
+        <name>Miami Heat</name>
+        <logo>miami_heat.svg</logo>
+        <code>1610612748</code>
+    </team>
+    <team>
+        <name>Milwaukee Bucks</name>
+        <logo>milwaukee_bucks.svg</logo>
+        <code>1610612749</code>
+    </team>
+    <team>
+        <name>Minnesota Timberwolves</name>
+        <logo>minnesota_timberwolves.svg</logo>
+        <code>1610612750</code>
+    </team>
+    <team>
+        <name>New Orleans Pelicans</name>
+        <logo>new_orleans_pelicans.svg</logo>
+        <code>1610612740</code>
+    </team>
+    <team>
+        <name>New York Knicks</name>
+        <logo>new_york_knicks.svg</logo>
+        <code>1610612752</code>
+    </team>
+    <team>
+        <name>Oklahoma City Thunder</name>
+        <logo>oklahoma_city_thunder.svg</logo>
+        <code>1610612760</code>
+    </team>
+    <team>
+        <name>Orlando Magic</name>
+        <logo>orlando_magic.svg</logo>
+        <code>1610612753</code>
+    </team>
+    <team>
+        <name>Philadelphia 76ers</name>
+        <logo>philadelphia_76ers.svg</logo>
+        <code>1610612755</code>
+    </team>
+    <team>
+        <name>Phoenix Suns</name>
+        <logo>phoenix_suns.svg</logo>
+        <code>1610612756</code>
+    </team>
+    <team>
+        <name>Portland Trail Blazers</name>
+        <logo>portland_trail_blazers.svg</logo>
+        <code>1610612757</code>
+    </team>
+    <team>
+        <name>Sacramento Kings</name>
+        <logo>sacramento_kings.svg</logo>
+        <code>1610612758</code>
+    </team>
+    <team>
+        <name>San Antonio Spurs</name>
+        <logo>san_antonio_spurs.svg</logo>
+        <code>1610612759</code>
+    </team>
+    <team>
+        <name>Toronto Raptors</name>
+        <logo>toronto_raptors.svg</logo>
+        <code>1610612761</code>
+    </team>
+    <team>
+        <name>Utah Jazz</name>
+        <logo>utah_jazz.svg</logo>
+        <code>1610612762</code>
+    </team>
+    <team>
+        <name>Washington Wizards</name>
+        <logo>whashington_wizards.svg</logo>
+        <code>1610612764</code>
+    </team>
+</teams>

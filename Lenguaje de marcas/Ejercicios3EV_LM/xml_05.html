@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fichero XML 04</title>
+    <style>
+        * {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        h3{margin: 0px;}
+
+    </style>
+</head>
+
+<body>
+    <h1>NBA - 24-25 Season Teams</h1>
+    <div id="mostrarInfo">
+    
+    </div>
+
+    <script>
+        function leeFich(entrada_input) {
+            const mostrarInfo = document.getElementById('mostrarInfo');
+
+            let contenidoXML = entrada_input;
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(contenidoXML, "application/xml")
+            const equipos = xmlDoc.querySelectorAll("team");
+            for (let i = 0; i < equipos.length; i++) {
+                let name = equipos[i].querySelector("name").textContent;
+                let logo = equipos[i].querySelector("logo").textContent;
+                let code = equipos[i].querySelector("code").textContent;
+                mostrarInfo.innerHTML += `<div><h3>${name}</h3><a href="https://www.nba.com/stats/team/${code}/traditional"><img src="./img/NBA/${logo}" width="100" height=100"></a></img><hr></div>`
+            }
+        }
+
+        fetch("./xml/nba2425.xml").then((response) => response.text())
+            .then((contenido) => {
+                leeFich(contenido)
+            })
+    </script>
+
+</body>
+
+</html>

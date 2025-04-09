@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fichero CSV 04</title>
+    <style>
+        table {
+            background-color: black;
+            color: white;
+            margin-top: 20px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        a {
+            color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="mostrarInfo"></table>
+
+    <script>
+        function leeFich(entrada_input) {
+            let lineas = entrada_input.split("\n");
+            for (let linea in lineas) {
+                let datos = lineas[linea].trim().split(",");
+                let filas = "";
+
+                if (datos.length == 4) {
+                    for (let dato in datos) {
+                        if (datos[dato] != "") {
+                            if (linea == 0 && dato == 0) {
+                                filas += "<td>Seleccionar</td>";
+                            } else if (dato == 0) {
+                                filas += `<td><input type="checkbox" onchange='mostrarSeleccionados();' id="${datos[1]}" name="${datos[1]}" value="${datos[1]}"></td>`;
+                            }
+                            let esunUrl = datos[dato].match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
+
+                            if (esunUrl != null) {
+                                filas += `<td><a href="${datos[dato]}">${datos[dato]}</a></td>`
+                            } else {
+                                filas += `<td>${datos[dato]}</td>`
+                            }
+                        }
+                    }
+
+                    mostrarInfo.innerHTML += `<tr>${filas}</tr>`
+                }
+            }
+        }
+        function mostrarSeleccionados() {
+            let filas = document.querySelectorAll("#mostrarInfo tr")
+            let seleccionados =[];
+            for (let i = 1; i < filas.length; i++) {
+                fila = filas[i];
+                let datos = fila.querySelectorAll("td");
+                if(document.getElementById(datos[2].textContent).checked == true){
+                    seleccionados.push(datos[2].textContent)
+                }
+            }
+            for(let a in seleccionados){
+            window.alert(seleccionados.join(" : "))}
+        }
+        fetch("./csv/atp.csv").then((response) => response.text())
+            .then((contenido) => {
+                leeFich(contenido)
+            })
+    </script>
+
+</body>
+
+</html>

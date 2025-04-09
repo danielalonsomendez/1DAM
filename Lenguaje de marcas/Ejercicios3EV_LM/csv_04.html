@@ -45,7 +45,7 @@
                 mostrarInfo.innerHTML += `<tr>${filas}</tr>`
             }
         }
-        fetch("./atp.csv").then((response) => response.text())
+        fetch("./csv/atp.csv").then((response) => response.text())
             .then((contenido) => {
                 leeFich(contenido)
             })
