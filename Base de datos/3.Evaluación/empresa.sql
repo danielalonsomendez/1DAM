@@ -439,3 +439,101 @@ end;
 //
 call Ejer7(15);
 //
+
+/* TEMA 13 */
+/*
+3. Cree una nueva tabla llamada EmpleadosAntiguos copia de la tabla Emple y sin datos,
+pero con dos atributos adicionales: fecha_baja, de tipo fecha, y finiquito de tipo float. Cree
+un trigger llamado BajaEmpleado sobre la tabla Emple, de manera que cuando se borre a
+un empleado de la tabla Emple, se añada dicho empleado a la nueva tabla
+EmpleadosAntiguos. Los datos del empleado en la tabla EmpleadosAntiguos serán los
+mismos que aparecen en la tabla Emple y además al atributo fecha_baja se le asignará la
+fecha del día en el que se elimina al empleado y al atributo finiquito se le asignará un valor
+que se calculará en función de su oficio:
+
+● Si el empleado tiene el oficio EMPLEADO o VENDEDOR, el finiquito se calculará
+multiplicando 30 por el salario diario del empleado y por el número de meses enteros
+de antigüedad divididos entre 12 (número de meses de un año). El salario diario del
+empleado se calculará dividiendo entre 30 su salario mensual.
+
+● Si el empleado tiene cualquier otro oficio, el finiquito se calculará multiplicando 20
+por el salario diario del empleado y por el número de meses enteros de antigüedad
+divididos entre 12.
+
+NOTA: La antigüedad se debe calcular como el número de meses transcurridos entre la
+fecha del día de hoy (fecha que nos devuelve la función current_date()) y la fecha de alta
+del empleado en la empresa (atributo fecha_alt). Para llevar a cabo este cálculo MySQL
+nos proporciona la función timestampdiff (unidad_tiempo, fecha1, fecha2) que recibe
+como parámetro una unidad de tiempo y dos fechas tal que fecha2 es superior o igual a
+fecha1. Esta función nos devuelve la diferencia
+*/
+
+create table EmpleadosAntiguos
+(emp_no int primary key constraint ch_emp_no2 check (emp_no > 0),
+apellido varchar(40) not null,
+oficio enum ('EMPLEADO', 'VENDEDOR', 'DIRECTOR', 'ANALISTA', 'PROGRAMADOR', 'PRESIDENTE') not null,
+dir int,
+fecha_alt date not null,
+salario float not null constraint ch_salario2 check (salario >= 600),
+comision float constraint ch_comision2 check (comision >= 0),
+dept_no int default 10 not null,
+fecha_baja date not null,
+finiquito float not null,
+constraint fk_dir_Emple2 foreign key(dir) references emple(emp_no) on update cascade,
+constraint fk_dept_no_Emple2 foreign key(dept_no) references depart(dept_no) on update cascade);//
+
+create trigger BajaEmpleado after delete on Emple for each row begin
+declare finiquito float;
+if(OLD.oficio = "EMPLEADO" or OLD.Oficio = "VENDEDOR") then
+select (((OLD.salario/30)*30) * (TIMESTAMPDIFF(MONTH, OLD.fecha_alt, current_date)/12.0)) into finiquito;
+else 
+select (((OLD.salario/30)*20) * (TIMESTAMPDIFF(MONTH, OLD.fecha_alt, current_date)/12.0)) into finiquito;
+end if;
+insert into EmpleadosAntiguos values(OLD.emp_no,OLD.apellido,OLD.oficio,OLD.dir,OLD.fecha_alt,OLD.salario,OLD.comision,OLD.dept_no,current_date(),finiquito);
+end;//
+
+/*
+4. Se desea almacenar dentro de la base de datos Empresa información sobre las
+modificaciones salariales de los empleados. Para ello se debe crear la tabla
+CambiosSalariales con la siguiente orden SQL: (..)
+
+Cree un disparador llamado RegistrarCambiosSalariales que cada vez que se efectúe una
+modificación en el salario de un empleado, añada un registro a la tabla CambiosSalariales,
+almacenando el número del empleado al que se le ha cambiado el salario (valor nuevo de
+este campo), su apellido (valor nuevo), el salario antes del cambio, el salario después del
+cambio, el porcentaje de modificación del salario y la fecha en la que se efectúa el cambio.
+NOTA: El porcentaje de modificación del salario se calcula mediante la siguiente fórmula: (...)
+Escriba una orden de modificación del salario de uno o varios empleados y compruebe
+que se almacenado correctamente información en la tabla CambiosSalariales.
+*/
+
+create table CambiosSalariales
+(emp_no int,
+apellido varchar(40) not null,
+SalAnt float,
+SalNue float,
+Porcen float,
+Fecha date);//
+
+create trigger RegistrarCambiosSalariales after update on Emple for each row begin
+if(OLD.salario != NEW.salario ) then
+insert into CambiosSalariales values(NEW.emp_no,NEW.apellido,OLD.salario,NEW.salario,(((NEW.salario-OLD.salario)/OLD.salario)*100),current_date());
+end if;
+end;//
+/*
+5. Cree una nueva tabla en la base de datos Empresa llamada ComisionesAntig que tenga los
+siguientes atributos:
+● Emp_no: número de empleado, del mismo tipo que el campo homónimo de la tabla
+Emple. Este campo será clave primaria y clave ajena al atributo homónimo de la tabla
+Emple.
+● Trienios: campo entero.
+● Plus: campo float.
+Cree un evento llamado CalcularPlusesTrienios que se ejecute en el momento de crearlo y
+cada trimestre y que se encargue de calcular los pluses por trienios de los empleados del
+siguiente modo: En primer lugar, borrará todo el contenido de la tabla ComisionesAntig. A
+continuación, recorrerá toda la tabla Emple y para cada empleado que lleve más de tres
+años trabajando en la empresa, se añadirá un registro a la tabla ComisionesAntig,
+almacenando el número del empleado, el número de trienios enteros que lleva trabajando
+en la empresa y su plus, que será de 45 € por cada trienio.
+*/
+create event CalcularPlusesTrienios on schedule every 1 quarter starts current_timestamp enable do call CalcularPlusesTrienios();

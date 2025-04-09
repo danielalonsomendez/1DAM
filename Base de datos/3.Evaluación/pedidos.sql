@@ -128,4 +128,62 @@ begin
 return (select count(A.DesArt) from LineaPedido LP join Articulo A on LP.CodArt=A.CodArt where A.DesArt = Descripcion );
 end;
 //
-select NumPedidos("Bolígrafo azul");
+select NumPedidos("Bolígrafo azul");//
+
+/* TEMA 13 */
+/*
+1. Cree una nueva tabla dentro de la base de datos Pedidos llamada ArticulosAntiguos. Esta
+tabla tendrá los mismos atributos que la tabla Articulo y servirá para contener los datos de
+los artículos eliminados de la tabla Articulo. Cree un disparador llamado BorradoArticulos
+que se ejecute cada vez que se realice un borrado sobre la tabla Articulo, de manera que el
+artículo que se borre se añada a la tabla ArticulosAntiguos.
+*/
+create table ArticulosAntiguos
+(CodArt char(5) primary key,
+DesArt varchar(30) not null,
+PVPArt float not null constraint ch_PVPArt2 check (PVPArt > 0));//
+
+create trigger BorradoArticulos after delete on Articulo for each row insert into ArticulosAntiguos values(OLD.CodArt,OLD.DesArt,OLD.PVPArt);//
+
+/*
+2. Cree una tabla llamada AuditoriaPrecios con un solo atributo llamado Linea de tipo
+varchar(100). Cree después un disparador llamado AuditarPrecios que dé fé de las
+modificaciones de precios sobre los artículos de la base de datos. Cada vez que se
+incremente o decremente el precio de un artículo más de un 10% se debe añadir una fila a
+la tabla AuditoriaPrecios con el texto: “El articulo xxxx ha cambiado su precio de yyyy a
+zzzz”, donde xxxx es la descripción del artículo, yyyy el precio antes de la modificación y
+zzzz el precio después de la modificación.
+*/
+
+create table AuditoriaPrecios(Linea varchar(100)primary key);//
+
+create trigger AuditarPrecios after update on Articulo for each row begin
+ if((((NEW.PVPArt-OLD.PVPArt)/OLD.PVPArt)* 100 ) >=10) then
+ insert into AuditoriaPrecios values(concat("El articulo ",NEW.DesArt," ha cambiado su precio de ",OLD.PVPArt," a ",NEW.PVPArt));
+ end if;
+ end;//
+ 
+/*
+6. Cree dentro de la base de datos Pedidos una nueva tabla vacía llamada
+EstadisticasArticulos para almacenar mensualmente información estadística sobre los
+artículos de la tabla Articulo. Cree esta tabla con la siguiente orden SQL: (...)
+Cree un evento llamado GenerarEstadisticaArt que se ejecute en el momento de crearlo y
+cada mes y que almacene sobre cada artículo su código, descripción, precio, el número de
+unidades totales solicitadas de ese artículo en todos los pedidos de la base de datos y la
+fecha del día en que se ejecuta el evento.
+*/
+create event GenerarEstadisticaArt on schedule every 1 month starts current_timestamp enable do call GenerarEstadisticaArt();
+
+/*
+7. Cree una nueva tabla vacía llamada ArticulosObsoletos con la misma estructura que la
+tabla Articulo de la base de datos Pedidos y un campo adicional llamado FecBaja de tipo
+fecha.
+Cree un evento llamado BajaArticulosObsoletos que se encargue de borrar de la tabla
+Articulo de la base de datos Pedidos los artículos obsoletos. Se consideran artículos
+obsoletos aquellos que se pidieron por última vez hace cinco años o más. Pues bien, estos
+artículos, además de ser eliminados de las tablas LineaPedido y Articulo, deben ser
+añadidos a la nueva tabla ArticulosObsoletos, asignando al atributo FecBaja la fecha del
+día en que el artículo es eliminado de la tabla Articulo. Este evento se ha de ejecutar en el
+momento de crearlo y cada mes.
+*/
+create event BajaArticulosObsoletos on schedule every 1 month starts current_timestamp enable do call BajaArticulosObsoletos();
