@@ -1,0 +1,8 @@
+Administrativo: Luis Grande Gil: 3200.00: Graduado en economía
+Administrativo: Ana Ruiz Almeida: 1525.00:  Graduado en turismo
+Administrativo: Albert Rius García: 2100.00: Técnico superior en adm. y finanzas
+Vendedor: Georgina Ruiz Plá: 1420.00: 140.00: Indefinido
+Vendedor: Laura Díaz Folgado: 1320.00: 132.00: Indefinido
+Vendedor: Ángel Jiménez Sánchez: 1450.00: 240.00: Fijo discontinuo
+Vendedor: Sandra Rojo Núñez: 1900.00: 190.00: Temporal
+Vendedor: Pedro Gómez Sanz: 1250.00: 125.50: Temporal
