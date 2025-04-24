@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fichero CSV 04</title>
+    <style>
+        body {
+            margin: 0px;
+        }
+
+        header {
+            text-align: center;
+            background: linear-gradient(90deg, #A8302F, #FFE4C4, #A8302F);
+            color: white;
+            padding: 10px 0;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 50px;
+            color: #A8302F;
+
+        }
+
+        #jugadores {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        #jugadores div {
+            margin: 10px;
+            width: 20rem;
+            height: 20rem;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background-color: #FFE4C4;
+            text-align: center;
+        }
+
+        #jugadores h1 {
+            width: 2rem;
+            height: 2rem;
+            padding: 20px;
+            font-size: 2rem;
+            color: #FFE4C4;
+            background-color: #A8302F;
+            border-radius: 50%;
+        }
+
+        #jugadores a {
+            color: #A8302F;
+            font-size: 2rem;
+        }
+
+        #jugadores p {
+            color: #A8302F;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>ATP - 2025.04.06</h1>
+    </header>
+    <div id="jugadores"></div>
+
+    <script>
+        function leeFich(xml) {
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(xml, "application/xml")
+            const jugadores = xmlDoc.querySelectorAll("jugador");
+            for (let i = 0; i < jugadores.length; i++) {
+                let jugador = jugadores[i];
+                let puesto = jugador.querySelector("puesto").textContent;
+                let nombre = jugador.querySelector("nombre").textContent;
+                let edad = jugador.querySelector("edad").textContent;
+                let web = jugador.querySelector("info").textContent;
+                document.getElementById('jugadores').innerHTML += `<div><input type="checkbox" onchange='mostrarSeleccionados();' id="${nombre}" name="${nombre}" value="${puesto}: ${nombre}"><h1>${puesto}</h1><a href="${web}">${nombre}</a><p>${edad} años</p></div>`
+
+            }
+        }
+        function mostrarSeleccionados() {
+            let filas = document.querySelectorAll("#jugadores input[type=checkbox]");
+            let seleccionados = [];
+            for (let i = 0; i < filas.length; i++) {
+                let fila = filas[i];
+                if (fila.checked == true) {
+                    seleccionados.push(fila.value);
+                }
+            }
+            if (seleccionados.length > 0) {
+                window.alert(seleccionados.join("\n"));
+            } else {
+                window.alert("No hay jugadores seleccionados.");
+            }
+        }
+        fetch("./xml/atp.xml").then((response) => response.text())
+            .then((contenido) => {
+                leeFich(contenido)
+            })
+    </script>
+
+</body>
+
+</html>
